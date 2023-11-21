@@ -68,7 +68,7 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -Iincludes
+	$(CC) $(CFLAGS) -c $< -o $@ -I../includes
 
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)
