@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:09:33 by smontuor          #+#    #+#             */
-/*   Updated: 2023/11/16 20:09:34 by smontuor         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:23:12 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef FT_GET_NEXT_LINE_H
+# define FT_GET_NEXT_LINE_H
 /******************************************************************************/
 /*                      Definizione BUFFER_SIZE se non definito in altro modo */
 /******************************************************************************/
