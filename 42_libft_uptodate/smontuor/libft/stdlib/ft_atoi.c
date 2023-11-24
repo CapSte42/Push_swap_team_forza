@@ -6,19 +6,11 @@
 /*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:23:02 by smontuor          #+#    #+#             */
-/*   Updated: 2023/11/22 08:44:48 by smontuor         ###   ########.fr       */
+/*   Updated: 2023/11/24 09:10:29 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
-
-static int	ft_isspace(int c)
-{
-	if (c == ' ' || c == '\f' || c == '\n' || c == '\r'
-		|| c == '\t' || c == '\v')
-		return (1);
-	return (0);
-}
 
 static int	ft_ispositive(int c)
 {

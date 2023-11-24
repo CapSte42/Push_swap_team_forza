@@ -6,7 +6,7 @@
 /*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:06:42 by smontuor          #+#    #+#             */
-/*   Updated: 2023/11/22 08:04:44 by smontuor         ###   ########.fr       */
+/*   Updated: 2023/11/24 08:00:59 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # include <stdio.h>
 # include <stdint.h>
 # include <stdarg.h>
+
+# ifndef FD_MAX
+#  define FD_MAX 4096
+# endif
 
 typedef struct s_list
 {
@@ -102,5 +106,7 @@ int				ft_putunsigned_fd(unsigned int n, int fd);
 int				ft_putptr_fd(uintptr_t ptr, int fd);
 int				ft_puthex_fd(unsigned int num, char format, int fd);
 int				ft_putnbrbase_wrapper_fd(uintptr_t nbr, char *base, int fd);
+int				ft_printf(int fd, const char *format, ...);
+int				ft_isspace(int c);
 
 #endif
