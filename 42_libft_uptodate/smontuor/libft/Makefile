@@ -15,6 +15,7 @@ SRCS = ./ctype/ft_isalnum.c \
 	./ctype/ft_isprint.c \
 	./ctype/ft_tolower.c \
 	./ctype/ft_toupper.c \
+	./ctype/ft_isspace.c \
 	./ft_fd/ft_putchar_fd.c \
 	./ft_fd/ft_putendl_fd.c \
 	./ft_fd/ft_putnbr_fd.c \
@@ -43,6 +44,7 @@ SRCS = ./ctype/ft_isalnum.c \
 	./not_standard/ft_split.c \
 	./not_standard/ft_substr.c \
 	./not_standard/ft_uitoa.c \
+	./not_standard/ft_issign.c \
 	./stdlib/ft_atoi.c \
 	./stdlib/ft_calloc.c \
 	./string/ft_strchr.c \

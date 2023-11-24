@@ -3,61 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   indexing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 16:29:01 by smontuor          #+#    #+#             */
-/*   Updated: 2023/11/22 06:16:48 by smontuor         ###   ########.fr       */
+/*   Created: 2023/11/21 16:29:01 by tpicchio          #+#    #+#             */
+/*   Updated: 2023/11/22 16:53:08 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	ft_swap(ssize_t *a, ssize_t *b);
-void	ft_quick_sort(ssize_t *stack, size_t start, size_t end);
-t_list	*indexing(t_list *lst);
+void	ft_quick_sort(ssize_t *stack, ssize_t start, ssize_t end);
+t_list	**indexing(t_list **lst);
+ssize_t	*ft_fill_stack(t_list **lst);
 
-int	main(void)
-{
-	t_list	*lst;
-	t_data	*data;
-
-	data = malloc(sizeof(t_data));
-	data->index = 0;
-	data->value = 56;
-	lst = ft_lstnew((t_data *)data);
-	data = malloc(sizeof(t_data));
-	data->index = 0;
-	data->value = 34;
-	lst->next = ft_lstnew((t_data *)data);
-	indexing(lst);
-	return (0);
-}
-
-t_list	*indexing(t_list *lst)
+t_list	**indexing(t_list **lst)
 {
 	ssize_t	*stack;
-	size_t	i;
-	t_data	tmp;
+	ssize_t	i;
+	ssize_t	j;
+	t_list	*tmp;
 
-	tmp = *(t_data *)lst->content;
-	stack = malloc(sizeof(ssize_t) * ft_lstsize(lst));
-	i = 0;
-	while (lst)
+	tmp = *lst;
+	stack = ft_fill_stack(lst);
+	if (!stack)
+		return (NULL);
+	ft_quick_sort(stack, 0, ft_lstsize(*lst) - 1);
+	tmp = *lst;
+	i = ft_lstsize(*lst);
+	while (tmp)
 	{
-		stack[i] = tmp.value;
-		lst = lst->next;
-		i++;
+		j = -1;
+		while (++j < i)
+			if (((t_data *)tmp->content)->value == stack[j])
+				((t_data *)tmp->content)->index = j + 1;
+		tmp = tmp->next;
 	}
-	ft_quick_sort(stack, 0, i - 1);
-	printf("%ld %ld\n", stack[0], stack[1]);
+	free(stack);
 	return (lst);
 }
 
-void	ft_quick_sort(ssize_t *stack, size_t start, size_t end)
+void	ft_quick_sort(ssize_t *stack, ssize_t start, ssize_t end)
 {
-	size_t	pivot;
-	size_t	i;
-	size_t	j;
+	ssize_t	pivot;
+	ssize_t	i;
+	ssize_t	j;
 
 	if (start < end)
 	{
@@ -87,3 +77,59 @@ void	ft_swap(ssize_t *a, ssize_t *b)
 	*a = *b;
 	*b = temp;
 }
+
+ssize_t	*ft_fill_stack(t_list **lst)
+{
+	ssize_t	i;
+	t_list	*tmp;
+	ssize_t	*stack;
+
+	tmp = *lst;
+	stack = malloc(sizeof(ssize_t) * ft_lstsize(*lst));
+	if (!stack)
+		return (NULL);
+	i = -1;
+	while (tmp)
+	{
+		stack[++i] = ((t_data *)tmp->content)->value;
+		tmp = tmp->next;
+	}
+	return (stack);
+}
+
+/* int	main(void)
+{
+	t_list	**lst;
+	t_list	*new;
+	t_data	*data;
+	int		i;
+
+	lst = malloc(sizeof(t_list *));
+	*lst = NULL;
+	i = 0;
+	while (i < 10)
+	{
+		data = malloc(sizeof(t_data));
+		data->value = rand() % 1000;
+		data->index = 0;
+		new = ft_lstnew(data);
+		ft_lstadd_back(lst, new);
+		i++;
+	}
+	indexing(lst);
+	new = *lst;
+	while (new)
+	{
+		printf("value: %ld\tindex: %ld\n",
+			((t_data *)new->content)->value,
+			((t_data *)new->content)->index);
+		free(new->content);
+		new = new->next;
+		free(*lst);
+		*lst = new;
+	}
+	free(new);
+	free(*lst);
+	free(lst);
+	return (0);
+} */
