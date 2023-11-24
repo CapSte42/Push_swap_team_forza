@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:01 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/24 15:40:58 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:23:00 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ int main(void)
 	t_list	*not_push;
 	t_list	*new;
 	t_data	*data;
-	ssize_t	num[10] = {31, 100, 38, 98, 97, 66, 83, 82, 62, 18};
+	ssize_t	num[15] = {-292, -917, 242, -123, 69, -385, 58, 436, 807, -812, 730, -283, 343, -26, -792};
 	//size_t	index[10] = {2, 10, 3, 9, 8, 5, 7, 6, 4, 1};
-	size_t	lis[6] = {2, 3, 5, 7, 1};
+	size_t	lis[5] = {1, 4, 9, 13, 15};
 	int		i;
 
 	data = malloc(sizeof(t_data));
@@ -113,7 +113,7 @@ int main(void)
 	data->index = 0;
 	lst = ft_lstnew(data);
 	i = 1;
-	while (i < 10)
+	while (i < 15)
 	{
 		data = malloc(sizeof(t_data));
 		data->value = num[i];
@@ -129,7 +129,7 @@ int main(void)
 	data->index = lis[0];
 	not_push = ft_lstnew(data);
 	i = 1;
-	while (i < 6)
+	while (i < 5)
 	{
 		data = malloc(sizeof(t_data));
 		data->value = 0;

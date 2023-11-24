@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:02:41 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/24 13:06:44 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:26:33 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ char	*set_stacks(t_list **stack_a, t_list **stack_b, t_list *not_push)
 			ft_rx(stack_a);
 			moves = ft_strjoin(moves, "ra\n");
 			ft_print_status(*stack_a, *stack_b, moves);
-			not_push = not_push->next;
+			if (not_push->next)
+				not_push = not_push->next;
 		}
 		else
 		{
@@ -58,7 +59,7 @@ void	ft_print_status(t_list *stack_a, t_list *stack_b, char *moves)
 {
 	printf("\033[2J\033[H");
 	printf("\tStack A\t\tStack B\n");
-	while (stack_a)
+	while (stack_a || stack_b->content)
 	{
 		if (stack_a)
 		{
