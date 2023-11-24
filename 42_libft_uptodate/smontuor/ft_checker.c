@@ -6,7 +6,7 @@
 /*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 06:18:17 by smontuor          #+#    #+#             */
-/*   Updated: 2023/11/24 10:33:37 by smontuor         ###   ########.fr       */
+/*   Updated: 2023/11/24 10:57:33 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ t_list	*ft_mount_lst(int size, char **value_arrey)
 	}
 	return lst;
 }
+
 ssize_t	*ft_fill_stack(t_list **lst)
 {
 	ssize_t	i;
@@ -162,6 +163,7 @@ void	ft_swap(ssize_t *a, ssize_t *b)
 	*a = *b;
 	*b = temp;
 }
+
 void	ft_quick_sort(ssize_t *stack, ssize_t start, ssize_t end)
 {
 	ssize_t	pivot;
@@ -245,6 +247,16 @@ int main(int ac, char **av)
 		temp = temp->next;
 	}
 
+	/*
+	giocate qua
+	
+	
+	
+	
+	
+	
+	
+	*/
     // Pulisci la lista alla fine
     return 0;
 }
