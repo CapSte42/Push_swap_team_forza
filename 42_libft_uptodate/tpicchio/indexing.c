@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:01 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/22 16:53:08 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:40:58 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,39 +97,68 @@ ssize_t	*ft_fill_stack(t_list **lst)
 	return (stack);
 }
 
-/* int	main(void)
+int main(void)
 {
-	t_list	**lst;
+	t_list	*lst;
+	t_list	*not_push;
 	t_list	*new;
 	t_data	*data;
+	ssize_t	num[10] = {31, 100, 38, 98, 97, 66, 83, 82, 62, 18};
+	//size_t	index[10] = {2, 10, 3, 9, 8, 5, 7, 6, 4, 1};
+	size_t	lis[6] = {2, 3, 5, 7, 1};
 	int		i;
 
-	lst = malloc(sizeof(t_list *));
-	*lst = NULL;
-	i = 0;
+	data = malloc(sizeof(t_data));
+	data->value = num[0];
+	data->index = 0;
+	lst = ft_lstnew(data);
+	i = 1;
 	while (i < 10)
 	{
 		data = malloc(sizeof(t_data));
-		data->value = rand() % 1000;
+		data->value = num[i];
 		data->index = 0;
+		data->dist = 0;
+		data->friend = NULL;
 		new = ft_lstnew(data);
-		ft_lstadd_back(lst, new);
+		ft_lstadd_back(&lst, new);
 		i++;
 	}
-	indexing(lst);
-	new = *lst;
+	data = malloc(sizeof(t_data));
+	data->value = 0;
+	data->index = lis[0];
+	not_push = ft_lstnew(data);
+	i = 1;
+	while (i < 6)
+	{
+		data = malloc(sizeof(t_data));
+		data->value = 0;
+		data->index = lis[i];
+		data->dist = 0;
+		data->friend = NULL;
+		new = ft_lstnew(data);
+		ft_lstadd_back(&not_push, new);
+		i++;
+	}
+	indexing(&lst);
+	ft_calculate(&lst, not_push);
+	return (0);
+}
+
+/* //print the index of each element of the list
+	new = lst;
 	while (new)
 	{
 		printf("value: %ld\tindex: %ld\n",
 			((t_data *)new->content)->value,
 			((t_data *)new->content)->index);
-		free(new->content);
 		new = new->next;
-		free(*lst);
-		*lst = new;
 	}
-	free(new);
-	free(*lst);
-	free(lst);
-	return (0);
-} */
+	//print index of not_push
+	new = not_push;
+	while (new)
+	{
+		printf("%ld ", ((t_data *)new->content)->index);
+		new = new->next;
+	}
+	printf("\n"); */
