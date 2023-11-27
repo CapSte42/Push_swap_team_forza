@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 16:10:03 by smontuor          #+#    #+#             */
-/*   Updated: 2023/11/27 16:50:29 by tpicchio         ###   ########.fr       */
+/*   Created: 2023/10/13 15:45:03 by fdonati           #+#    #+#             */
+/*   Updated: 2023/10/13 16:22:46 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,17 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	}
 }
 
-/*Parameters lst:
-	The address of a pointer to the first link of
-	a list.
-	new: The address of a pointer to the node to be
-	added to the list.
-Return value
-	None
-External functs
-	None
-Description
-	Adds the node ’new’ at the beginning of the list.*/
+/*
+int	main()
+{
+	t_list *lst;
+	t_list *new;
+
+	lst = ft_lstnew(NULL);
+	new = ft_lstnew("exodia");
+	ft_lstadd_front(&lst, new);
+	printf("%s\n", (char *) lst->content);
+	printf("%s\n", (char *) lst->next->content);
+	return (0);
+}
+*/

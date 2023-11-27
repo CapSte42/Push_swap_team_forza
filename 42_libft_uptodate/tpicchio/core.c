@@ -6,24 +6,31 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:02:41 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/24 17:26:33 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:30:18 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_print_status(t_list *stack_a, t_list *stack_b, char *moves);
 char	*set_stacks(t_list **stack_a, t_list **stack_b, t_list *not_push);
 
 char	*ft_calculate(t_list **stack_a, t_list *not_push)
 {
 	t_list	*stack_b;
+	t_list	*node;
 	char	*moves;
 
-	stack_b = malloc(sizeof(t_list));
-	if (!stack_b)
-		return (NULL);
+	stack_b = NULL;
 	moves = set_stacks(stack_a, &stack_b, not_push);
+	//moves = ft_remove_ra(moves); rimuove tutti i ra alla fine TODO
+	while (stack_b)
+	{
+		ft_set_obm_distb(stack_a, &stack_b);
+		node = ft_obm_score(stack_b);
+		moves = ft_push_best(stack_a, &stack_b, node, moves);
+	}
+	moves = ft_last_rotate(stack_a, moves);
+	ft_print_status(*stack_a, stack_b, moves);
 	return (moves);
 }
 
@@ -54,87 +61,22 @@ char	*set_stacks(t_list **stack_a, t_list **stack_b, t_list *not_push)
 	}
 	return (moves);
 }
-
-void	ft_print_status(t_list *stack_a, t_list *stack_b, char *moves)
+/* char	*ft_remove_ra(char *moves)
 {
-	printf("\033[2J\033[H");
-	printf("\tStack A\t\tStack B\n");
-	while (stack_a || stack_b->content)
-	{
-		if (stack_a)
-		{
-			printf("\t   %ld\t\t   ", ((t_data *)stack_a->content)->index);
-			stack_a = stack_a->next;
-		}
-		if (stack_b->content)
-		{
-			printf("%ld\n", ((t_data *)stack_b->content)->index);
-			stack_b = stack_b->next;
-		}
-		else
-			printf("\n");
-	}
-	printf("Moves:\n%s", moves);
-	sleep(1);
-}
+	char	*new;
+	int		size;
+	int		cont;
 
-/* int main(void)
-{
-	t_list	*lst;
-	t_list	*not_push;
-	t_list	*new;
-	t_data	*data;
-	ssize_t	num[10] = {31, 100, 38, 98, 97, 66, 83, 18, 82, 62};
-	size_t	index[10] = {2, 10, 3, 9, 8, 5, 7, 1, 6, 4};
-	size_t	lis[6] = {2, 3, 5, 7, 1};
-	int		i;
-
-	data = malloc(sizeof(t_data));
-	data->value = num[0];
-	data->index = index[0];
-	lst = ft_lstnew(data);
-	i = 1;
-	while (i < 10)
+	size = ft_strlen(moves) - 1;
+	cont = 0;
+	while (moves[size] == "ra" || moves[size] == '\n')
 	{
-		data = malloc(sizeof(t_data));
-		data->value = num[i];
-		data->index = index[i];
-		new = ft_lstnew(data);
-		ft_lstadd_back(&lst, new);
-		i++;
+		if (moves[size] == "ra")
+			cont++;
+		size--;
 	}
-	data = malloc(sizeof(t_data));
-	data->value = 0;
-	data->index = lis[0];
-	not_push = ft_lstnew(data);
-	i = 1;
-	while (i < 6)
-	{
-		data = malloc(sizeof(t_data));
-		data->value = 0;
-		data->index = lis[i];
-		new = ft_lstnew(data);
-		ft_lstadd_back(&not_push, new);
-		i++;
-	}
-	printf("<%s>", ft_calculate(&lst, not_push));
-	return (0);
+	new = ft_calloc(ft_strlen(moves) - cont + 1, sizeof(char));
+	ft_strlcpy(new, moves, ft_strlen(moves) - cont + 1);
+	free(moves);
+	return (new);
 } */
-
-/* t_list *temp;
-
-	// Print lst
-	temp = lst;
-	while (temp)
-	{
-		printf("Value: %zd\tIndex: %ld\n", ((t_data *)(temp->content))->value, ((t_data *)(temp->content))->index);
-		temp = temp->next;
-	}
-
-	// Print not_push
-	temp = not_push;
-	while (temp)
-	{
-		printf("IndexLIS: %ld\n", ((t_data *)(temp->content))->index);
-		temp = temp->next;
-	} */

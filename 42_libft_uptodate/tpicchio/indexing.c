@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:01 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/24 17:23:00 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:47:32 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,8 @@ int main(void)
 	t_list	*not_push;
 	t_list	*new;
 	t_data	*data;
-	ssize_t	num[15] = {-292, -917, 242, -123, 69, -385, 58, 436, 807, -812, 730, -283, 343, -26, -792};
-	//size_t	index[10] = {2, 10, 3, 9, 8, 5, 7, 6, 4, 1};
-	size_t	lis[5] = {1, 4, 9, 13, 15};
+	ssize_t	num[15] = {-567, 891, -185, 308, -721, 442, -834, 632, 147, -512, 775, -232, 419, -695, 197};
+	//size_t	lis[5] = {1, 4, 9, 13, 15}; -292, -917, 242, -123, 69, -385, 58, 436, 807, -812, 730, -283, 343, -26, -792
 	int		i;
 
 	data = malloc(sizeof(t_data));
@@ -119,12 +118,12 @@ int main(void)
 		data->value = num[i];
 		data->index = 0;
 		data->dist = 0;
-		data->friend = NULL;
+		data->obm = NULL;
 		new = ft_lstnew(data);
 		ft_lstadd_back(&lst, new);
 		i++;
 	}
-	data = malloc(sizeof(t_data));
+	/* data = malloc(sizeof(t_data));
 	data->value = 0;
 	data->index = lis[0];
 	not_push = ft_lstnew(data);
@@ -139,9 +138,12 @@ int main(void)
 		new = ft_lstnew(data);
 		ft_lstadd_back(&not_push, new);
 		i++;
-	}
+	} */
 	indexing(&lst);
+	//ft_print_status(lst, lst, "test\n");
+	not_push = ft_lis(lst);
 	ft_calculate(&lst, not_push);
+	//ft_print_status(lst, not_push, "test\n");
 	return (0);
 }
 
