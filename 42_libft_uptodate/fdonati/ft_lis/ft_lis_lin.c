@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:29:43 by fdonati           #+#    #+#             */
-/*   Updated: 2023/11/23 19:29:50 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/11/27 15:03:14 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ t_list	*ft_lis_lst(t_list *lst, int parent[], int max_index)
 	t_list	*lis_lst;
 	t_list	*node;
 	int		*nmb;
+	int		i;
 
 	k = max_index;
 	lis_lst = NULL;
+	i = 0;
 	while (k >= 0)
 	{
-		nmb = malloc(sizeof(int));
+		nmb = malloc(sizeof(size_t));
 		if (nmb == NULL)
 			return (NULL);
 		*nmb = ft_lstto_nmb(lst, k);
