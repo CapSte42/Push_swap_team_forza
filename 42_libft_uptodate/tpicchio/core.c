@@ -6,11 +6,12 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:02:41 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/27 18:30:18 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:23:37 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <fcntl.h>
 
 char	*set_stacks(t_list **stack_a, t_list **stack_b, t_list *not_push);
 
@@ -19,10 +20,13 @@ char	*ft_calculate(t_list **stack_a, t_list *not_push)
 	t_list	*stack_b;
 	t_list	*node;
 	char	*moves;
+	int		fd;
 
 	stack_b = NULL;
 	moves = set_stacks(stack_a, &stack_b, not_push);
-	//moves = ft_remove_ra(moves); rimuove tutti i ra alla fine TODO
+	//ft_print_status(*stack_a, stack_b, moves);
+	moves = ft_remove_ra(stack_a, moves);
+	//ft_print_status(*stack_a, stack_b, moves);
 	while (stack_b)
 	{
 		ft_set_obm_distb(stack_a, &stack_b);
@@ -30,6 +34,9 @@ char	*ft_calculate(t_list **stack_a, t_list *not_push)
 		moves = ft_push_best(stack_a, &stack_b, node, moves);
 	}
 	moves = ft_last_rotate(stack_a, moves);
+	//printf("%s", moves);
+	fd = open("moves.txt", O_RDWR);
+	write(fd, moves, ft_strlen(moves));
 	ft_print_status(*stack_a, stack_b, moves);
 	return (moves);
 }
@@ -46,37 +53,44 @@ char	*set_stacks(t_list **stack_a, t_list **stack_b, t_list *not_push)
 		if (((t_data *)((*stack_a)->content))->index
 			== ((t_data *)not_push->content)->index)
 		{
+			if (((t_data *)((*stack_a)->content))->dist == 1)
+				moves = ft_strjoin(moves, "sa\n");
 			ft_rx(stack_a);
 			moves = ft_strjoin(moves, "ra\n");
-			ft_print_status(*stack_a, *stack_b, moves);
 			if (not_push->next)
 				not_push = not_push->next;
 		}
 		else
 		{
+			if (((t_data *)((*stack_a)->content))->dist == 1)
+				moves = ft_strjoin(moves, "sa\n");
 			ft_px(stack_b, stack_a);
 			moves = ft_strjoin(moves, "pb\n");
-			ft_print_status(*stack_a, *stack_b, moves);
 		}
 	}
 	return (moves);
 }
-/* char	*ft_remove_ra(char *moves)
+
+char	*ft_remove_ra(t_list **stack_a, char *moves)
 {
 	char	*new;
+	char	**split;
 	int		size;
 	int		cont;
 
-	size = ft_strlen(moves) - 1;
-	cont = 0;
-	while (moves[size] == "ra" || moves[size] == '\n')
+	split = ft_split(moves, '\n');
+	size = 0;
+	while (split[size])
+		size++;
+	while (--size >= 0 && split[size][0] == 'r' && split[size][1] == 'a')
+			ft_rrx(stack_a);
+	new = ft_calloc(((size + 1) * 2) + 1, sizeof(char));
+	cont = -1;
+	while (++cont <= size)
 	{
-		if (moves[size] == "ra")
-			cont++;
-		size--;
+		new = ft_strjoin(new, split[cont]);
+		new = ft_strjoin(new, "\n");
 	}
-	new = ft_calloc(ft_strlen(moves) - cont + 1, sizeof(char));
-	ft_strlcpy(new, moves, ft_strlen(moves) - cont + 1);
 	free(moves);
 	return (new);
-} */
+}

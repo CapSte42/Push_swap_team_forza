@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:02:14 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/27 18:30:47 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:17:09 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	*ft_positive_dist(t_list **stack_a, t_list **stack_b,
 	{
 		ft_rr(stack_a, stack_b);
 		moves = ft_strjoin(moves, "rr\n");
-		ft_print_status(*stack_a, *stack_b, moves);
+		//ft_print_status(*stack_a, *stack_b, moves);
 		dist_b--;
 		dist_a--;
 	}
@@ -62,14 +62,14 @@ static char	*ft_positive_dist(t_list **stack_a, t_list **stack_b,
 	{
 		ft_rx(stack_a);
 		moves = ft_strjoin(moves, "ra\n");
-		ft_print_status(*stack_a, *stack_b, moves);
+	//	ft_print_status(*stack_a, *stack_b, moves);
 		dist_a--;
 	}
 	while (dist_b > 0)
 	{
 		ft_rx(stack_b);
 		moves = ft_strjoin(moves, "rb\n");
-		ft_print_status(*stack_a, *stack_b, moves);
+	//	ft_print_status(*stack_a, *stack_b, moves);
 		dist_b--;
 	}
 	return (moves);
@@ -82,6 +82,6 @@ char	*ft_push_best(t_list **stack_a, t_list **stack_b,
 	moves = ft_negative_dist(stack_a, stack_b, node, moves);
 	ft_px(stack_a, stack_b);
 	moves = ft_strjoin(moves, "pa\n");
-	ft_print_status(*stack_a, *stack_b, moves);
+//	ft_print_status(*stack_a, *stack_b, moves);
 	return (moves);
 }

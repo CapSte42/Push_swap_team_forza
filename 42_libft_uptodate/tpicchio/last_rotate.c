@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:01:16 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/27 18:33:35 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:59:21 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static ssize_t	ft_min_dist(t_list *stack_a)
 {
 	t_list	*node;
-	size_t	i;
-	size_t	size;
+	ssize_t	i;
+	ssize_t	size;
 
 	node = stack_a;
 	i = 0;
@@ -27,9 +27,9 @@ static ssize_t	ft_min_dist(t_list *stack_a)
 		node = node->next;
 	}
 	if (i <= size / 2)
-		return (((t_data *)node->content)->dist = i);
+		return (i);
 	else
-		return (((t_data *)node->content)->dist = i - size);
+		return (i - size);
 }
 
 char	*ft_last_rotate(t_list **stack_a, char *moves)
@@ -43,14 +43,14 @@ char	*ft_last_rotate(t_list **stack_a, char *moves)
 		{
 			ft_rx(stack_a);
 			moves = ft_strjoin(moves, "ra\n");
-			ft_print_status(*stack_a, NULL, moves);
+			//ft_print_status(*stack_a, NULL, moves);
 			min_dist--;
 		}
 		else if (min_dist < 0)
 		{
 			ft_rrx(stack_a);
 			moves = ft_strjoin(moves, "rra\n");
-			ft_print_status(*stack_a, NULL, moves);
+			//ft_print_status(*stack_a, NULL, moves);
 			min_dist++;
 		}
 	}

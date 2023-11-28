@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:23:50 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/27 18:18:19 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:53:07 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ char	*ft_calculate(t_list **stack_a, t_list *not_push);
 char	*ft_push_best(t_list **stack_a, t_list **stack_b,
 			t_list *node, char *moves);
 char	*ft_last_rotate(t_list **stack_a, char *moves);
-//char	*ft_remove_ra(char *moves);
+char	*ft_remove_ra(t_list **stack_a, char *moves);
+void	ft_set_swap(t_list **lst);
 
 void	ft_rx(t_list **stack);
 void	ft_rrx(t_list **stack);
