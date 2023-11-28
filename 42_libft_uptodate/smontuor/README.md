@@ -37,3 +37,16 @@ VERIFICARE MOSSE
 
 ORDINARE STACK
 
+
+ricevo argv
+parsing
+inserisco in lista
+setto la lista a 0
+passo la lista
+	settare index
+	settare swap (in dist)
+	calcolo liis
+		montaggio stringa mosse
+			set stacks
+
+

@@ -6,7 +6,7 @@
 /*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 06:18:17 by smontuor          #+#    #+#             */
-/*   Updated: 2023/11/24 10:57:33 by smontuor         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:57:14 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,13 +249,7 @@ int main(int ac, char **av)
 
 	/*
 	giocate qua
-	
-	
-	
-	
-	
-	
-	
+
 	*/
     // Pulisci la lista alla fine
     return 0;
