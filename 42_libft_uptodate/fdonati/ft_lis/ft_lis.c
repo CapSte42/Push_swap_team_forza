@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:55:36 by fdonati           #+#    #+#             */
-/*   Updated: 2023/11/29 15:02:28 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/11/29 17:17:09 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ t_list	*ft_lis(t_list *lst)
 			lis_lst = ft_lis_build(node, lst);
 			if (ft_lstsize(lis_lst) > ft_lstsize(lis_lst_r))
 			{
-				ft_lstclean(&lis_lst_r);
+				ft_lstclear(&lis_lst_r, free);
 				lis_lst_r = lis_lst;
 			}
+			else
+				ft_lstclear(&lis_lst, free);
 		}
 		min_lis = ft_min_index(lis_lst_r);
 		node = node->next;
@@ -67,6 +69,7 @@ t_list	*ft_lis(t_list *lst)
 	int		i;
 
 	stack_a = NULL;
+	lis = NULL;
 	i = 0;
 	while (i < 500)
 	{
@@ -86,6 +89,8 @@ t_list	*ft_lis(t_list *lst)
 		node = node->next;
 	}
 	printf("\n");
+	ft_lstclear(&lis, free);
+	ft_lstclear(&stack_a, free);
 	return (0);
-}
- */
+} */
+
