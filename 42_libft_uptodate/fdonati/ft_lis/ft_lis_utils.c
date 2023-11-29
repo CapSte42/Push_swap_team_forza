@@ -6,11 +6,31 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:58:19 by fdonati           #+#    #+#             */
-/*   Updated: 2023/11/28 15:15:02 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/11/29 12:38:35 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+size_t	ft_min_index(t_list *stack_a)
+{
+	t_list	*node;
+	size_t	index;
+
+	index = 1;
+	while (index <= 500)
+	{
+		node = stack_a;
+		while (node != NULL)
+		{
+			if (((t_data *)node->content)->index == index)
+				return (index);
+			node = node->next;
+		}
+		index++;
+	}
+	return (0);										// non dovrebbe mai arrivare qui, errore
+}
 
 void	ft_lstclean(t_list **lst)
 {

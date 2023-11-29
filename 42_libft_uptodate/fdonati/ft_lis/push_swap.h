@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:27:30 by fdonati           #+#    #+#             */
-/*   Updated: 2023/11/28 15:16:03 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/11/29 12:39:08 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int		ft_lis_crcl_indx(t_list *lis_lst, t_list *lst, size_t m);
 t_list	*ft_lis_crcl(t_list *lis_lst, t_list *lst);
 void	ft_lstclean(t_list **lst);
 t_list	*ft_lis_build(t_list *node, t_list *lst);
+size_t	ft_min_index(t_list *stack_a);
 
 #endif
