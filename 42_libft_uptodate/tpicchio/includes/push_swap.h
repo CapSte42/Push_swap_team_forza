@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:23:50 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/28 16:53:07 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:19:05 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char	*ft_calculate(t_list **stack_a, t_list *not_push);
 char	*ft_push_best(t_list **stack_a, t_list **stack_b,
 			t_list *node, char *moves);
 char	*ft_last_rotate(t_list **stack_a, char *moves);
-char	*ft_remove_ra(t_list **stack_a, char *moves);
 void	ft_set_swap(t_list **lst);
 
 void	ft_rx(t_list **stack);
@@ -48,6 +47,7 @@ size_t	ft_lstto_nmb(t_list *lst, int index);
 t_list	*ft_lstcutm(t_list *lst, size_t m);
 t_list	*ft_lis_lin(t_list *lst, int n);
 t_list	*ft_lis_crcl(t_list *lis_lst, t_list *lst);
+t_list	*ft_lis_build(t_list *node, t_list *lst);
 
 size_t	ft_min_index(t_list *stack_a);
 t_data	*ft_set_obm_dista(t_list **stack_a, size_t index);
