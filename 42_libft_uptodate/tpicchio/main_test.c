@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:39:29 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/30 16:11:34 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:22:17 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ int main(void)
 	//ssize_t	num[10] = {-9819,5528,5040,-4168,-8362,-9664,4654,2353,-6604,-7641};
 	int		size = 5;
 	int		i;
-	int		fd;
 	char	*moves;
 
 	data = malloc(sizeof(t_data));
 	data->value = num[0];
 	data->index = 0;
+	data->dist = 0;
+	data->obm = NULL;
 	lst = ft_lstnew(data);
 	i = 1;
 	while (i < size)
@@ -53,6 +54,11 @@ int main(void)
 	ft_set_swap(&lst);
 	not_push = ft_lis(lst);
 	moves = ft_calculate(&lst, not_push);
+	printf("%s", moves);
+	free(moves);
+	ft_lstclear(&not_push, free);
+	ft_lstclear(&lst, free);
+	/*int		fd;
 	FILE	*file;
 	file = fopen("moves.txt", "w");
 	fd = fileno(file);
@@ -77,6 +83,6 @@ int main(void)
 	}
 	indexing(&animate);
 	t_list *stack_b = NULL;
-	ft_animation(not_push, animate, stack_b, moves);
+	ft_animation(not_push, animate, stack_b, moves); */
 	return (0);
 }
