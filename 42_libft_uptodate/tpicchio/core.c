@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:02:41 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/29 13:59:05 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:08:38 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,16 @@ static char	*set_stacks(t_list **stack_a, t_list **stack_b,
 		t_list *not_push, char *moves)
 {
 	int		i;
+	size_t	size;
 
 	i = ft_lstsize(*stack_a);
+	size = (size_t) i;
 	while (moves && --i >= 0)
 	{
 		if (((t_data *)((*stack_a)->content))->dist == 1)
 			moves = ft_strjoin(moves, "sa\n");
 		if (((t_data *)((*stack_a)->content))->index
-			== ((t_data *)not_push->content)->index)
+			== (*(size_t *)not_push->content))
 		{
 			ft_rx(stack_a);
 			moves = ft_strjoin(moves, "ra\n");
@@ -56,6 +58,7 @@ static char	*set_stacks(t_list **stack_a, t_list **stack_b,
 		}
 		else
 		{
+			moves = ft_cazzi(stack_a, stack_b, size, moves);
 			ft_px(stack_b, stack_a);
 			moves = ft_strjoin(moves, "pb\n");
 		}
@@ -80,6 +83,6 @@ char	*ft_calculate(t_list **stack_a, t_list *not_push)
 		moves = ft_push_best(stack_a, &stack_b, node, moves);
 	}
 	moves = ft_last_rotate(stack_a, moves);
+	//aggiungere free di tutto
 	return (moves);
 }
-

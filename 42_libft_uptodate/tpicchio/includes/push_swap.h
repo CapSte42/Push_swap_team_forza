@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:23:50 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/29 15:56:10 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:02:54 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,11 @@ size_t	ft_calc_score(t_data *content);
 t_list	*ft_obm_score(t_list *stack_b);
 size_t	ft_max_index(t_list *stack_a);
 
-void	ft_print_status(t_list *stack_a, t_list *stack_b, char *moves);
-void ft_animation(t_list *stack_a, t_list *stack_b, char *moves);
+void	ft_print_status(t_list *lis, t_list *stack_a, t_list *stack_b,
+			char *moves);
+void	ft_animation(t_list *lis, t_list *stack_a, t_list *stack_b,
+			char *moves);
 
+char	*ft_cazzi(t_list **stack_a, t_list **stack_b,
+			size_t size, char *moves);
 #endif

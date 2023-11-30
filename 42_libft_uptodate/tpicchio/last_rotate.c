@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:01:16 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/28 12:59:21 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:09:28 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,12 @@ char	*ft_last_rotate(t_list **stack_a, char *moves)
 		{
 			ft_rx(stack_a);
 			moves = ft_strjoin(moves, "ra\n");
-			//ft_print_status(*stack_a, NULL, moves);
 			min_dist--;
 		}
 		else if (min_dist < 0)
 		{
 			ft_rrx(stack_a);
 			moves = ft_strjoin(moves, "rra\n");
-			//ft_print_status(*stack_a, NULL, moves);
 			min_dist++;
 		}
 	}
