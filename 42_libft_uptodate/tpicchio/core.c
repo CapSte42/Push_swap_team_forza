@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:02:41 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/30 17:20:58 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/01 16:46:55 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*ft_remove_ra(t_list **stack_a, char *moves)
 		size++;
 	while (--size >= 0 && split[size][0] == 'r' && split[size][1] == 'a')
 		ft_rrx(stack_a);
-	new = ft_calloc(((size + 1) * 2) + 1, sizeof(char));
+	new = ft_calloc(((size + 1) * 2), sizeof(char));
 	cont = -1;
 	while (++cont <= size)
 	{
