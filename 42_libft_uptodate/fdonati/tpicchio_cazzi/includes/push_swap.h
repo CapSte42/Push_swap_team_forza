@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:23:50 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/29 18:10:40 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/12/01 13:08:37 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@ void	ft_rr(t_list **stack_a, t_list **stack_b);
 void	ft_rrr(t_list **stack_a, t_list **stack_b);
 void	ft_ss(t_list **stack_a, t_list **stack_b);
 
-t_list	*ft_lis(t_list *lst);
+t_list	*ft_lis(t_list **lst);
 void	ft_lstclean(t_list **lst);
 size_t	ft_lstto_nmb(t_list *lst, int index);
-t_list	*ft_lstcutm(t_list *lst, size_t m);
+t_list	*ft_lstcutm(t_list *lst, size_t m, int *error);
+int		ft_lis_crcl_indx(t_list *lis_lst, t_list *lst, size_t m, int *error);
 t_list	*ft_lis_lin(t_list *lst, int n);
-t_list	*ft_lis_crcl(t_list *lis_lst, t_list *lst);
-t_list	*ft_lis_build(t_list *node, t_list *lst);
+t_list	*ft_lis_crcl(t_list *lis_lst, t_list *lst, int *error);
+t_list	*ft_lis_build(t_list *node, t_list **lst);
 
 size_t	ft_min_index(t_list *stack_a);
 t_data	*ft_set_obm_dista(t_list **stack_a, size_t index);
@@ -59,9 +60,10 @@ size_t	ft_calc_score(t_data *content);
 t_list	*ft_obm_score(t_list *stack_b);
 size_t	ft_max_index(t_list *stack_a);
 
-void	ft_print_status(t_list *stack_a, t_list *stack_b, char *moves);
-void ft_animation(t_list *stack_a, t_list *stack_b, char *moves);
-
+void	ft_print_status(t_list *lis, t_list *stack_a, t_list *stack_b,
+			char *moves);
+void	ft_animation(t_list *lis, t_list *stack_a, t_list *stack_b,
+			char *moves);
 
 char	*ft_cazzi(t_list **stack_a, t_list **stack_b,
 			size_t size, char *moves);

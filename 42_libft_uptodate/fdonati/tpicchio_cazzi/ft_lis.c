@@ -6,21 +6,28 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:55:36 by fdonati           #+#    #+#             */
-/*   Updated: 2023/11/29 15:02:28 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/12/01 12:57:21 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lis_build(t_list *node, t_list *lst)
+t_list	*ft_lis_build(t_list *node, t_list **lst)
 {
 	t_list	*lis_lst;
 	t_list	*lis_lst_crcl;
+	int		error;
 
+	error = 0;
 	lis_lst = ft_lis_lin(node, ft_lstsize(node));
 	if (lis_lst == NULL)
 		return (NULL);
-	lis_lst_crcl = ft_lis_crcl(lis_lst, lst);
+	lis_lst_crcl = ft_lis_crcl(lis_lst, *lst, &error);
+	if (error != 0)
+	{
+		ft_lstclear(&lis_lst, free);
+		return (NULL);
+	}
 	if (lis_lst_crcl != NULL)
 	{
 		ft_lstadd_front(&lis_lst, ft_lstlast(lis_lst_crcl));
@@ -29,7 +36,7 @@ t_list	*ft_lis_build(t_list *node, t_list *lst)
 	return (lis_lst);
 }
 
-t_list	*ft_lis(t_list *lst)
+t_list	*ft_lis(t_list **lst)
 {
 	t_list	*lis_lst;
 	t_list	*lis_lst_r;
@@ -37,13 +44,15 @@ t_list	*ft_lis(t_list *lst)
 	size_t	min_lis;
 
 	lis_lst_r = NULL;
-	node = lst;
+	node = *lst;
 	min_lis = 2147483647;
 	while (node != NULL)
 	{
 		if (min_lis >= ((t_data *) node->content)->index)
 		{
 			lis_lst = ft_lis_build(node, lst);
+			if (lis_lst == NULL)
+				ft_error(-4, NULL, lst);
 			if (ft_lstsize(lis_lst) > ft_lstsize(lis_lst_r))
 			{
 				ft_lstclean(&lis_lst_r);

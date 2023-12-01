@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lis_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:58:19 by fdonati           #+#    #+#             */
-/*   Updated: 2023/11/29 15:08:28 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:56:13 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ size_t	ft_lstto_nmb(t_list *lst, int index)
 	return (((t_data *) lst->content)->index);
 }
 
-t_list	*ft_lstcutm(t_list *lst, size_t m)
+t_list	*ft_lstcutm(t_list *lst, size_t m, int *error)
 {
 	t_list	*cutm_lst;
 	t_list	*node;
@@ -53,6 +53,7 @@ t_list	*ft_lstcutm(t_list *lst, size_t m)
 			node = ft_lstnew(lst->content);
 			if (node == NULL)
 			{
+				*error = -4;
 				ft_lstclear(&cutm_lst, free);
 				return (NULL);
 			}
