@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_obm_score.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 15:27:37 by fdonati           #+#    #+#             */
-/*   Updated: 2023/11/27 16:40:44 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/01 14:21:01 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_calc_score(t_data *content)
 	else if (content->dist < 0 && content->obm->dist >= 0)
 		score = ft_mod(content->dist) + content->obm->dist;
 	else
-		score = 0;						// non dovrebbe mai arrivare qui, errore
+		score = 0;
 	return (score);
 }
 
