@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 16:23:50 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/01 09:41:31 by smontuor         ###   ########.fr       */
+/*   Created: 2023/11/06 21:26:11 by smontuor          #+#    #+#             */
+/*   Updated: 2023/11/16 19:58:59 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include "libft.h"
-# include <stdlib.h>
-# include <stdio.h>
 
-typedef struct s_data
-{
-	size_t			index;
-	ssize_t			value;
-	ssize_t			dist;
-	struct s_data	*obm;
-}	t_data;
-
-char	**ft_split_input_into_token(int ac, char **av);
-void	ft_error(int error, char **token, t_list **lst);
-void	ft_check_token(char **token);
-char	*ft_calculate(t_list **stack_a, t_list *not_push);
+int		ft_printf(const char *format, ...);
 
 #endif

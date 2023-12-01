@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   indexing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
+/*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:01 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/29 18:31:32 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/12/01 11:14:14 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_list	**indexing(t_list **lst)
 	tmp = *lst;
 	stack = ft_fill_stack(lst);
 	if (!stack)
-		return (NULL);
+		return (NULL); //gestire
 	ft_quick_sort(stack, 0, ft_lstsize(*lst) - 1);
 	tmp = *lst;
 	i = ft_lstsize(*lst);
