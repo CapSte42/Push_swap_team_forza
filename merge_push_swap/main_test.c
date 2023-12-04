@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:39:29 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/04 15:41:24 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:01:22 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int main(int ac, char **av)
 	moves = ft_calculate(&lst, lis);
 	printf("%s", moves);
 	free(moves);
+	ft_free_token_array(token);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:02:41 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/04 15:42:12 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:02:52 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*ft_remove_ra(t_list **stack_a, char *moves)
 		new = ft_strjoin(new, "\n");
 	}
 	free(moves);
-	free(split);
+	ft_free_token_array(split);
 	return (new);
 }
 
@@ -41,8 +41,10 @@ static char	*set_stacks(t_list **stack_a, t_list **stack_b,
 		t_list *not_push, char *moves)
 {
 	int		i;
+	size_t	size;
 
 	i = ft_lstsize(*stack_a);
+	size = (size_t) i;
 	while (moves && --i >= 0)
 	{
 		if (((t_data *)((*stack_a)->content))->dist == 1)
@@ -57,6 +59,9 @@ static char	*set_stacks(t_list **stack_a, t_list **stack_b,
 		}
 		else
 		{
+			if (((t_data *)((*stack_a)->next->content))->index
+			!= (*(size_t *)not_push->content))
+				moves = ft_cazzi(stack_a, stack_b, size, moves);
 			ft_px(stack_b, stack_a);
 			moves = ft_strjoin(moves, "pb\n");
 		}
@@ -82,6 +87,7 @@ char	*ft_calculate(t_list **stack_a, t_list *not_push)
 	}
 	moves = ft_last_rotate(stack_a, moves);
 	ft_lstclear(&stack_b, free);
-	//aggiungere free di tutto
+	ft_lstclear(&not_push, free);
+	ft_lstclear(stack_a, free);
 	return (moves);
 }

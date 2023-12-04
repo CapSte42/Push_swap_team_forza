@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lis.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:55:36 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/01 12:57:21 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/12/04 17:12:49 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_list	*ft_lis(t_list **lst)
 				ft_error(-4, NULL, lst);
 			if (ft_lstsize(lis_lst) > ft_lstsize(lis_lst_r))
 			{
-				ft_lstclean(&lis_lst_r);
+				ft_lstclear(&lis_lst_r, free);
 				lis_lst_r = lis_lst;
 			}
 		}
