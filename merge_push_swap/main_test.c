@@ -6,28 +6,29 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:39:29 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/04 10:42:30 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:46:09 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <fcntl.h>
 
-int main(int ac, char *av)
+int main(int ac, char **av)
 {
 	char	**token;
-	char	**moves;
+	char	*moves;
 	t_list	*lst;
 	t_list	*lis;
 
 	token = ft_split_input_into_token(ac, av);
 	ft_check_token(token);
-	ft_set_list(&lst);
+	ft_set_list(&lst, token);
 	indexing(&lst);
 	ft_set_swap(&lst);
-	lis = ft_lis(lst);
+	lis = ft_lis(&lst);
 	moves = ft_calculate(&lst, lis);
 	printf("%s", moves);
+	free(moves);
 	return (0);
 }
 

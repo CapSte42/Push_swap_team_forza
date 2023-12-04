@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:23:50 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/30 16:02:54 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:37:54 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	ft_print_status(t_list *lis, t_list *stack_a, t_list *stack_b,
 void	ft_animation(t_list *lis, t_list *stack_a, t_list *stack_b,
 			char *moves);
 
-char	*ft_cazzi(t_list **stack_a, t_list **stack_b,
-			size_t size, char *moves);
+/* char	*ft_cazzi(t_list **stack_a, t_list **stack_b,
+			size_t size, char *moves); */
+
+void	ft_error(int error, char **token, t_list **lst);
+void	ft_free_token_array(char **token);
+void	ft_check_token(char **token);
+
 #endif
