@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:23:02 by smontuor          #+#    #+#             */
-/*   Updated: 2023/12/04 13:21:44 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:43:27 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	ft_atoi(const char *nptr, int *error)
 {
 	intmax_t	num;
 
-printf("atoi\n");
 	*error = 0;
 	num = ft_mount_num(nptr, error);
 	if (*error == 1)
