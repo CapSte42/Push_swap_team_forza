@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indexing.c                                         :+:      :+:    :+:   */
+/*   set_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:01 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/30 15:39:51 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:39:55 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_swap(ssize_t *a, ssize_t *b)
 	*b = temp;
 }
 
-static void	ft_quick_sort(ssize_t *stack, ssize_t start, ssize_t end)
+static void	ft_quick_sort(ssize_t *array_s, ssize_t start, ssize_t end)
 {
 	ssize_t	pivot;
 	ssize_t	i;
@@ -34,60 +34,59 @@ static void	ft_quick_sort(ssize_t *stack, ssize_t start, ssize_t end)
 		j = end;
 		while (i < j)
 		{
-			while (stack[i] <= stack[pivot] && i < end)
+			while (array_s[i] <= array_s[pivot] && i < end)
 				i++;
-			while (stack[j] > stack[pivot])
+			while (array_s[j] > array_s[pivot])
 				j--;
 			if (i < j)
-				ft_swap(&stack[i], &stack[j]);
+				ft_swap(&array_s[i], &array_s[j]);
 		}
-		ft_swap(&stack[pivot], &stack[j]);
-		ft_quick_sort(stack, start, j - 1);
-		ft_quick_sort(stack, j + 1, end);
+		ft_swap(&array_s[pivot], &array_s[j]);
+		ft_quick_sort(array_s, start, j - 1);
+		ft_quick_sort(array_s, j + 1, end);
 	}
 }
 
-static ssize_t	*ft_fill_stack(t_list **lst)
+static ssize_t	*ft_fill_array(t_list **lst)
 {
 	ssize_t	i;
 	t_list	*tmp;
-	ssize_t	*stack;
+	ssize_t	*array_s;
 
 	tmp = *lst;
-	stack = malloc(sizeof(ssize_t) * ft_lstsize(*lst));
-	if (!stack)
+	array_s = malloc(sizeof(ssize_t) * ft_lstsize(*lst));
+	if (!array_s)
 		return (NULL);
 	i = -1;
 	while (tmp)
 	{
-		stack[++i] = ((t_data *)tmp->content)->value;
+		array_s[++i] = ((t_data *)tmp->content)->value;
 		tmp = tmp->next;
 	}
-	return (stack);
+	return (array_s);
 }
 
-t_list	**indexing(t_list **lst)
+void	ft_set_index(t_list **lst)
 {
-	ssize_t	*stack;
+	ssize_t	*array_s;
 	ssize_t	i;
 	ssize_t	j;
 	t_list	*tmp;
 
 	tmp = *lst;
-	stack = ft_fill_stack(lst);
-	if (!stack)
-		return (NULL);
-	ft_quick_sort(stack, 0, ft_lstsize(*lst) - 1);
+	array_s = ft_fill_array(lst);
+	if (!array_s)
+		return ; // aggiungere ft_error
+	ft_quick_sort(array_s, 0, ft_lstsize(*lst) - 1);
 	tmp = *lst;
 	i = ft_lstsize(*lst);
 	while (tmp)
 	{
 		j = -1;
 		while (++j < i)
-			if (((t_data *)tmp->content)->value == stack[j])
+			if (((t_data *)tmp->content)->value == array_s[j])
 				((t_data *)tmp->content)->index = j + 1;
 		tmp = tmp->next;
 	}
-	free(stack);
-	return (lst);
+	free(array_s);
 }

@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:23:50 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/04 12:59:21 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:01:12 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ typedef struct s_data
 	struct s_data	*obm;
 }	t_data;
 
-t_list	**indexing(t_list **lst);
-char	*ft_calculate(t_list **stack_a, t_list *not_push);
+void	ft_set_index(t_list **lst);
+void	ft_set_swap(t_list **lst);
+char	*ft_push_swap(t_list **stack_a, t_list *not_push);
+
 char	*ft_push_best(t_list **stack_a, t_list **stack_b,
 			t_list *node, char *moves);
 char	*ft_last_rotate(t_list **stack_a, char *moves);
-void	ft_set_swap(t_list **lst);
 
 void	ft_rx(t_list **stack);
 void	ft_rrx(t_list **stack);
@@ -44,11 +45,8 @@ void	ft_ss(t_list **stack_a, t_list **stack_b);
 t_list	*ft_lis(t_list **lst);
 void	ft_lstclean(t_list **lst);
 size_t	ft_lstto_nmb(t_list *lst, int index);
-t_list	*ft_lstcutm(t_list *lst, size_t m, int *error);
-int		ft_lis_crcl_indx(t_list *lis_lst, t_list *lst, size_t m, int *error);
 t_list	*ft_lis_lin(t_list *lst, int n);
 t_list	*ft_lis_crcl(t_list *lis_lst, t_list *lst, int *error);
-t_list	*ft_lis_build(t_list *node, t_list **lst);
 
 size_t	ft_min_index(t_list *stack_a);
 t_data	*ft_set_obm_dista(t_list **stack_a, size_t index);
@@ -65,8 +63,7 @@ void	ft_print_status(t_list *lis, t_list *stack_a, t_list *stack_b,
 void	ft_animation(t_list *lis, t_list *stack_a, t_list *stack_b,
 			char *moves);
 
-char	*ft_cazzi(t_list **stack_a, t_list **stack_b,
-			size_t size, char *moves);
+char	*ft_cazzi(t_list **stack_a, t_list **stack_b, char *moves);
 
 char	**ft_split_input_into_token(int ac, char **av);
 void	ft_error(int error, char **token, t_list **lst);

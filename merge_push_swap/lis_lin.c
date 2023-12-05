@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lis_lin.c                                       :+:      :+:    :+:   */
+/*   lis_lin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:29:43 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/01 12:22:14 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/12/05 14:55:28 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lis_lst(t_list *lst, int parent[], int max_index)
+static t_list	*ft_lis_lst(t_list *lst, int parent[], int max_index)
 {
 	int		k;
 	t_list	*lis_lst;
@@ -40,7 +40,7 @@ t_list	*ft_lis_lst(t_list *lst, int parent[], int max_index)
 	return (lis_lst);
 }
 
-void	ft_lis_algrtm(t_list *lst, int n, int lis[], int parent[])
+static void	ft_lis_algrtm(t_list *lst, int n, int lis[], int parent[])
 {
 	int	i;
 	int	j;
@@ -63,7 +63,7 @@ void	ft_lis_algrtm(t_list *lst, int n, int lis[], int parent[])
 	}
 }
 
-int	ft_lis_maxindex(int lis[], int n)
+static int	ft_lis_maxindex(int lis[], int n)
 {
 	int	i;
 	int	max_index;

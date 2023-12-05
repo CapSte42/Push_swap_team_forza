@@ -1,18 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lis_crcl.c                                      :+:      :+:    :+:   */
+/*   lis_crcl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:55:52 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/01 13:04:22 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/12/05 14:57:24 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_lis_crcl_indx(t_list *lis_lst, t_list *lst, size_t m, int *error)
+
+static t_list	*ft_lstcutm(t_list *lst, size_t m, int *error)
+{
+	t_list	*cutm_lst;
+	t_list	*node;
+
+	cutm_lst = NULL;
+	while (lst != NULL)
+	{
+		if ((((t_data *) lst->content)->index) > m)
+		{
+			node = ft_lstnew(lst->content);
+			if (node == NULL)
+			{
+				*error = -4;
+				ft_lstclear(&cutm_lst, free);
+				return (NULL);
+			}
+			ft_lstadd_back(&cutm_lst, node);
+		}
+		lst = lst->next;
+	}
+	return (cutm_lst);
+}
+
+static int	ft_lis_crcl_indx(t_list *lis_lst, t_list *lst, size_t m, int *error)
 {
 	int	i;
 

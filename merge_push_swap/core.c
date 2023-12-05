@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:02:41 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/05 09:29:57 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:07:40 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,26 @@ static char	*ft_remove_ra(t_list **stack_a, char *moves)
 	return (new);
 }
 
-static char	*set_stacks(t_list **stack_a, t_list **stack_b,
-		t_list *not_push, char *moves)
+static char	*ft_set_stacks(t_list **stack_a, t_list **stack_b,
+		t_list *lis, char *moves)
 {
 	int		i;
-	size_t	size;
 
 	i = ft_lstsize(*stack_a);
-	size = (size_t) i;
 	while (moves && --i >= 0)
 	{
 		if (((t_data *)((*stack_a)->content))->dist == 1)
 			moves = ft_strjoin(moves, "sa\n");
 		if (((t_data *)((*stack_a)->content))->index
-			== (*(size_t *)not_push->content))
+			== (*(size_t *)lis->content))
 		{
 			ft_rx(stack_a);
 			moves = ft_strjoin(moves, "ra\n");
-			if (not_push->next)
-				not_push = not_push->next;
+			if (lis->next)
+				lis = lis->next;
 		}
 		else
 		{
-			if (((t_data *)((*stack_a)->next->content))->index
-			!= (*(size_t *)not_push->content))
-				moves = ft_cazzi(stack_a, stack_b, size, moves);
 			ft_px(stack_b, stack_a);
 			moves = ft_strjoin(moves, "pb\n");
 		}
@@ -72,25 +67,25 @@ static char	*set_stacks(t_list **stack_a, t_list **stack_b,
 	return (moves);
 }
 
-char	*ft_calculate(t_list **stack_a, t_list *not_push)
+char	*ft_push_swap(t_list **stack_a, t_list *lis)
 {
 	t_list	*stack_b;
-	t_list	*node;
+	t_list	*obm;
 	char	*moves;
 
 	stack_b = NULL;
 	moves = ft_calloc(1, sizeof(char));
-	moves = set_stacks(stack_a, &stack_b, not_push, moves);
+	moves = ft_set_stacks(stack_a, &stack_b, lis, moves);
 	moves = ft_remove_ra(stack_a, moves);
 	while (stack_b)
 	{
 		ft_set_obm_distb(stack_a, &stack_b);
-		node = ft_obm_score(stack_b);
-		moves = ft_push_best(stack_a, &stack_b, node, moves);
+		obm = ft_obm_score(stack_b);
+		moves = ft_push_best(stack_a, &stack_b, obm, moves);
 	}
 	moves = ft_last_rotate(stack_a, moves);
 	ft_lstclear(&stack_b, free);
-	ft_lstclear(&not_push, free);
+	ft_lstclear(&lis, free);
 	ft_lstclear(stack_a, free);
 	return (moves);
 }

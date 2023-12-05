@@ -6,13 +6,13 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:11:51 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/29 13:57:45 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:42:22 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_swap_stack(t_list **tmp)
+static void	ft_sx_in(t_list **tmp)
 {
 	t_list	*swap;
 
@@ -21,7 +21,6 @@ static void	ft_swap_stack(t_list **tmp)
 	swap->next = (*tmp)->next->next;
 	(*tmp)->next->next = swap;
 	((t_data *)((*tmp)->next->content))->dist = 1;
-	*tmp = (*tmp)->next;
 }
 
 void	ft_set_swap(t_list **lst)
@@ -47,8 +46,7 @@ void	ft_set_swap(t_list **lst)
 				== ((t_data *)tmp->next->next->content)->index + 1)
 			|| (((t_data *)tmp->next->content)->index == min
 				&& ((t_data *)tmp->next->next->content)->index == max))
-			ft_swap_stack(&tmp);
-		else
-			tmp = tmp->next;
+			ft_sx_in(&tmp);
+		tmp = tmp->next;
 	}
 }
