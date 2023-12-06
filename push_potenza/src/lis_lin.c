@@ -23,7 +23,7 @@ static t_list	*ft_lis_lst(t_list *lst, int parent[], int max_index)
 	lis_lst = NULL;
 	while (k >= 0)
 	{
-		nmb = malloc(sizeof(size_t));
+		nmb = malloc(sizeof(size_t)); //GESTIRE
 		*nmb = ft_lstto_nmb(lst, k);
 		if (nmb != NULL)
 			node = ft_lstnew(nmb);

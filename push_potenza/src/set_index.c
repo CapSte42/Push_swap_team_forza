@@ -54,7 +54,7 @@ static ssize_t	*ft_fill_array(t_list **lst)
 	ssize_t	*array_s;
 
 	tmp = *lst;
-	array_s = malloc(sizeof(ssize_t) * ft_lstsize(*lst));
+	array_s = malloc(sizeof(ssize_t) * ft_lstsize(*lst)); //GESTIRE
 	if (!array_s)
 		return (NULL);
 	i = -1;

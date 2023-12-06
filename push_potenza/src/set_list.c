@@ -3,7 +3,7 @@
 
 static t_data	*set_t_data(t_data *new_data, ssize_t value)
 {
-	new_data = malloc(sizeof(t_data));
+	new_data = malloc(sizeof(t_data)); //GESTIRE
 	if (new_data == NULL)
 	{
 		return (NULL);
