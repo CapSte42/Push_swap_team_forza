@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:02:41 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/06 12:34:13 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:22:10 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ static char	*ft_set_stacks(t_list **stack_a, t_list **stack_b,
 		t_list *lis, char *moves)
 {
 	int		i;
+	int		size_lis;
 
 	i = ft_lstsize(*stack_a);
+	size_lis = ft_lstsize(lis);
 	while (moves && --i >= 0)
 	{
 		if (((t_data *)((*stack_a)->content))->dist == 1)
