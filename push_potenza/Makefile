@@ -1,10 +1,10 @@
 # Config ---------------------------------------------------------------------->
 
 NAME        := push_swap
-LIB        	:= ft 
+LIB        	:= ft
 LIB_TARGET 	:= libft/libft.a
 INCS        := \
-	./include 
+	./include
 SRC_DIR     := src
 SRCS        := \
 				core.c \
@@ -26,7 +26,7 @@ SRCS        := \
 				set_obm_dist.c \
 				set_swap.c \
 				split_input_into_token.c \
-				swap_moves.c 
+				swap_moves.c
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 #CHECKER		:= \
 	lib/libft/src/_get_next_line/ft_get_next_line.c \
@@ -39,7 +39,7 @@ SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 	src/lst/t_stack_check_dup.c \
 	src/lst/t_stack_n_is_inside.c \
 	src/lst/t_stack_free.c
-	
+
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
@@ -57,7 +57,7 @@ DIR_DUP     = mkdir -p $(@D)
 
 # Rules ----------------------------------------------------------------------->
 
-all: banner $(NAME) 
+all: banner $(NAME)
 
 $(NAME): $(OBJS) $(LIB_TARGET)
 	$(CC) $(LDFLAGS) $(OBJS) $(LDLIB) -o $(NAME)
@@ -85,8 +85,8 @@ clean:
 fclean: clean
 	for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f fclean; done
 	$(RM) $(NAME)
-#	$(RM) checker 
-	
+#	$(RM) checker
+
 re:
 	$(MAKE) fclean
 	$(MAKE) all
