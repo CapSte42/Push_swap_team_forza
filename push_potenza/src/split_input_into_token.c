@@ -12,7 +12,7 @@ static char	**ft_one_arg(char *str, char sep)
 	return (token);
 }
 
-static void	ft_multiple_arg_is_triky(char** token)
+static void	ft_multiple_arg_is_triky(char **token)
 {
 	int	i;
 	int	j;
@@ -32,6 +32,7 @@ static void	ft_multiple_arg_is_triky(char** token)
 		i++;
 	}
 }
+
 static char	**ft_multiple_arg(char **matrix, int size)
 {
 	char	**token;

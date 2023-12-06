@@ -2,7 +2,7 @@
 
 void	ft_free_matrix(char **matrix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (matrix != NULL)

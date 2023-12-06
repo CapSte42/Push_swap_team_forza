@@ -23,10 +23,10 @@ void	ft_set_list(t_list **lst, char **token)
 	t_data	*new_data;
 	t_list	*new_node;
 
-	i = 0;
+	i = -1;
 	error = 0;
 	*lst = NULL;
-	while (token[i] != NULL)
+	while (token[++i] != NULL)
 	{
 		value = ft_atoi(token[i], &error);
 		new_data = set_t_data(new_data, value);
@@ -41,7 +41,5 @@ void	ft_set_list(t_list **lst, char **token)
 			ft_error(-4, token, lst);
 		}
 		ft_lstadd_back(lst, new_node);
-		i++;
 	}
 }
-

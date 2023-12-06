@@ -6,12 +6,11 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:55:52 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/05 14:57:24 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:11:46 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 static t_list	*ft_lstcutm(t_list *lst, size_t m, int *error)
 {

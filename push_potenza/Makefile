@@ -19,7 +19,6 @@ SRCS        := \
 				moves.c \
 				obm_score_utils.c \
 				obm_score.c \
-				print_status.c \
 				push_best.c \
 				set_index.c \
 				set_list.c \

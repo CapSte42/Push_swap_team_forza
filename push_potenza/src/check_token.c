@@ -12,7 +12,7 @@ static void	ft_is_all_digit(char **token)
 	while (token[i] != NULL)
 	{
 		j = 0;
-		if (token[i][j + 1] != '\0' && ft_issign(token[i][j]) == 1 )
+		if (token[i][j + 1] != '\0' && ft_issign(token[i][j]) == 1)
 			j++;
 		while (token[i][j] != '\0')
 		{
@@ -77,6 +77,7 @@ static void	ft_is_unique(char **token)
 		i++;
 	}
 }
+
 static void	ft_infamous_int(char **token)
 {
 	int	i;
@@ -84,7 +85,6 @@ static void	ft_infamous_int(char **token)
 	if (token == NULL)
 		ft_error(3, NULL, NULL);
 	i = 0;
-
 	while (token[i])
 	{
 		if (token[i][0])
@@ -95,6 +95,7 @@ static void	ft_infamous_int(char **token)
 		i++;
 	}
 }
+
 void	ft_check_token(char **token)
 {
 	ft_is_all_digit(token);
@@ -102,4 +103,3 @@ void	ft_check_token(char **token)
 	ft_is_unique(token);
 	ft_infamous_int(token);
 }
-
