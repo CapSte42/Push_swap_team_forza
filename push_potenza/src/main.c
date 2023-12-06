@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:39:29 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/05 15:00:31 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:05:16 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 		ft_set_swap(&lst);
 	lis = ft_lis(&lst);
 	moves = ft_push_swap(&lst, lis);
-	printf("%s", moves);
+	ft_printf(1, "%s", moves);
 	free(moves);
 	return (0);
 }

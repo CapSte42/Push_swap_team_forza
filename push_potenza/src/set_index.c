@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:29:01 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/05 14:39:55 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:02:42 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static ssize_t	*ft_fill_array(t_list **lst)
 	ssize_t	*array_s;
 
 	tmp = *lst;
-	array_s = malloc(sizeof(ssize_t) * ft_lstsize(*lst)); //GESTIRE
+	array_s = malloc(sizeof(ssize_t) * ft_lstsize(*lst));
 	if (!array_s)
 		return (NULL);
 	i = -1;
@@ -76,7 +76,7 @@ void	ft_set_index(t_list **lst)
 	tmp = *lst;
 	array_s = ft_fill_array(lst);
 	if (!array_s)
-		return ; // aggiungere ft_error
+		ft_error(2, NULL, lst);
 	ft_quick_sort(array_s, 0, ft_lstsize(*lst) - 1);
 	tmp = *lst;
 	i = ft_lstsize(*lst);

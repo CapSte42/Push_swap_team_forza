@@ -7,7 +7,7 @@ INCS        := \
 	./include
 SRC_DIR     := src
 SRCS        := \
-				core.c \
+				push_swap.c \
 				check_token.c \
 				error.c \
 				last_rotate.c \

@@ -90,7 +90,8 @@ static void	ft_infamous_int(char **token)
 		if (token[i][0])
 			if (ft_issign(token[i][0]) == 1 || token[i][0] == '0')
 				if (token[i][1])
-					if (token[i][2] && token[i][1] == '0')
+					if ((token[i][2] && token[i][1] == '0')
+						|| token[i][1] != '0')
 						ft_error(1, token, NULL);
 		i++;
 	}
