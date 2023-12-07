@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:50:36 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/11/24 16:51:03 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:28:10 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_sx(t_list **stack)
 {
 	t_list	*tmp;
 
-	/* if (*stack == NULL || (*stack)->next == NULL)
+	/* if (*stack == NULL || ( *stack)->next == NULL)
 		ft_ferror(); */
 	tmp = (*stack)->next;
 	(*stack)->next = (*stack)->next->next;
