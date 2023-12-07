@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:29:43 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/07 11:06:23 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:05:30 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_list	*ft_lis_lst(t_list *lst, int parent[], int max_index)
 	lis_lst = NULL;
 	while (max_index >= 0)
 	{
-		nmb = malloc(sizeof(int));
+		nmb = malloc(sizeof(size_t));
 		if (nmb == NULL)
 		{
 			ft_lstclear(&lis_lst, free);

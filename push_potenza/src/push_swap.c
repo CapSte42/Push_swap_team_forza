@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:02:41 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/06 16:22:10 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:21:04 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,24 @@ char	*ft_push_swap(t_list **stack_a, t_list *lis)
 	char	*moves;
 
 	stack_b = NULL;
-	moves = ft_calloc(1, sizeof(char));						//GESTIRE
-	moves = ft_set_stacks(stack_a, &stack_b, lis, moves);	//GESTIRE
-	moves = ft_remove_ra(stack_a, moves);					//GESTIRE
-	while (stack_b)
+	moves = ft_calloc(1, sizeof(char));
+	if (moves != NULL)
+		moves = ft_set_stacks(stack_a, &stack_b, lis, moves);
+	if (moves != NULL)
+		moves = ft_remove_ra(stack_a, moves);
+	while (stack_b && moves != NULL)
 	{
 		ft_set_obm_distb(stack_a, &stack_b);
 		obm = ft_obm_score(stack_b);
-		moves = ft_push_best(stack_a, &stack_b, obm, moves);//GESTIRE
+		moves = ft_push_best(stack_a, &stack_b, obm, moves);
 	}
-	moves = ft_last_rotate(stack_a, moves);					//GESTIRE
+	if (moves != NULL)
+		moves = ft_last_rotate(stack_a, moves);
+	if (moves == NULL)
+	{
+		ft_free_all(stack_a, &stack_b, &lis);
+		ft_error(4, NULL, NULL);
+	}
 	ft_free_all(stack_a, &stack_b, &lis);
 	return (moves);
 }

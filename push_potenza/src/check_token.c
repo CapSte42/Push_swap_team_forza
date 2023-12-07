@@ -1,4 +1,4 @@
-#include "libft.h"
+
 #include "push_swap.h"
 
 static void	ft_is_all_digit(char **token)
