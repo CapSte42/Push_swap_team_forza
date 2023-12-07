@@ -40,15 +40,10 @@ static void	ft_within_int(char **token)
 	while (token[i] != NULL)
 	{
 		if (ft_strncmp(token[i], "-0", 3) == 0)
-		{
-			ft_printf(2, "Error: ...-0? Really?\n");
-			ft_error(0, token, NULL);
-		}
+			ft_error(5, token, NULL);
 		ft_atoi(token[i], &error);
 		if (error == 1)
-		{
 			ft_error(1, NULL, NULL);
-		}
 		i++;
 	}
 }
@@ -89,10 +84,12 @@ static void	ft_infamous_int(char **token)
 	while (token[i])
 	{
 		if (token[i][0])
-			if (ft_issign(token[i][0]) == 1 || token[i][0] == '0')
-				if (token[i][1])
-					if ((token[i][2] && token[i][1] == '0'))
-						ft_error(1, token, NULL);
+		{
+			if (ft_issign(token[i][0]) == 1 && token[i][1] == '0')
+				ft_error(1, token, NULL);
+			else if (token[i][0] == '0' && token[i][1] != '\0')
+				ft_error(1, token, NULL);
+		}
 		i++;
 	}
 }

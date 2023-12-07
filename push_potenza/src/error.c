@@ -17,6 +17,8 @@ void	ft_error(int error, char **token, t_list **lst)
 			"\nTake a candy as gift and retry.\n");
 	if (error == 4)
 		ft_printf(2, "Malloc list error\n");
+	if (error == 5)
+		ft_printf(2, "Error: ...-0? Really?\n");
 	if (error < 0)
 		return ;
 	exit(error);
