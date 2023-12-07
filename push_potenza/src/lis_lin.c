@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lis_lin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 19:29:43 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/05 14:55:28 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:06:23 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 static t_list	*ft_lis_lst(t_list *lst, int parent[], int max_index)
 {
-	int		k;
 	t_list	*lis_lst;
 	t_list	*node;
 	size_t	*nmb;
 
-	k = max_index;
 	lis_lst = NULL;
-	while (k >= 0)
+	while (max_index >= 0)
 	{
-		nmb = malloc(sizeof(size_t)); //GESTIRE
-		*nmb = ft_lstto_nmb(lst, k);
-		if (nmb != NULL)
-			node = ft_lstnew(nmb);
-		if (node == NULL || nmb == NULL)
+		nmb = malloc(sizeof(int));
+		if (nmb == NULL)
 		{
-			if (nmb != NULL)
-				free(nmb);
+			ft_lstclear(&lis_lst, free);
+			return (NULL);
+		}
+		*nmb = ft_lstto_nmb(lst, max_index);
+		node = ft_lstnew(nmb);
+		if (node == NULL)
+		{
+			free(nmb);
 			ft_lstclear(&lis_lst, free);
 			return (NULL);
 		}
 		ft_lstadd_front(&lis_lst, node);
-		k = parent[k];
+		max_index = parent[max_index];
 	}
 	return (lis_lst);
 }

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lis_crcl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:55:52 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/06 10:11:46 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:41:04 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 
 static t_list	*ft_lstcutm(t_list *lst, size_t m, int *error)
 {
@@ -25,8 +26,8 @@ static t_list	*ft_lstcutm(t_list *lst, size_t m, int *error)
 			node = ft_lstnew(lst->content);
 			if (node == NULL)
 			{
-				*error = -4;
-				ft_lstclear(&cutm_lst, free);
+				*error = 4;
+				ft_lstclean(&cutm_lst);
 				return (NULL);
 			}
 			ft_lstadd_back(&cutm_lst, node);
@@ -49,7 +50,7 @@ static int	ft_lis_crcl_indx(t_list *lis_lst, t_list *lst, size_t m, int *error)
 			i++;
 		lst = lst->next;
 	}
-	*error = -4;
+	*error = 3;
 	return (-1);
 }
 
@@ -71,7 +72,7 @@ t_list	*ft_lis_crcl(t_list *lis_lst, t_list *lst, int *error)
 	ft_lstclean(&cutm_lst);
 	if (lis_lst_crcl == NULL)
 	{
-		*error = -4;
+		*error = 4;
 		return (NULL);
 	}
 	return (lis_lst_crcl);
