@@ -1,0 +1,18 @@
+cc -Werror -Wextra -Wall -Iinclude ./src/*.c ./libft/libft.a //DEPRECATED -----USATE IL MAKE, MERDE
+
+eseguire
+    echo $? 
+per catchare il codice di uscita da un programma.
+nel caso di errore settiamo il codice a n > 0
+se tutto va bene n = 0
+~figata
+
+testate il parsing con qualsiasi cazzo di cosa vi venga in mente
+ARG="4 cazzi -1 0 -0 +0 00 4"; valgrind --leak-check=full ./push_swap $ARG | wc -l
+
+ATTENZIONE
+
+make monna = NSFW
+
+aggiunti //GESTIRE vicino a porcate
+per testare un malloc fallito sostituire size con -1 (~malloc(-1)~)
