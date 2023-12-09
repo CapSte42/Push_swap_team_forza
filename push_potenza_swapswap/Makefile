@@ -35,8 +35,11 @@ CHECKER		:= \
 	src/split_input_into_token.c \
 	src/check_token.c \
 	src/set_list.c \
+	src/moves.c \
+	src/swap_moves.c \
+	src/bonus/ft_parse_moves.c \
+	src/bonus/ft_stacks_are_cool.c \
 	src/bonus/ft_checker.c
-
 
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
@@ -90,7 +93,7 @@ re:
 	$(MAKE) all
 
 bonus: banner $(LIB_TARGET)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(CHECKER) $(LIB_TARGET) -o checker
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(CHECKER) $(LDFLAGS) $(LDLIB) -o checker
 	${info ${BOLD}Creating  -> ${BLUE}checker${NO_COLOR}}
 
 # Style ----------------------------------------------------------------------->

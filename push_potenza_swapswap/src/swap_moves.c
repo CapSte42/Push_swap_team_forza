@@ -13,19 +13,21 @@
 #include "push_swap.h"
 
 
-void	ft_sx(t_list **stack)
+int	ft_sx(t_list **stack)
 {
 	t_list	*tmp;
 
+	if (!*stack)
+		return (1);
 	tmp = (*stack)->next;
 	(*stack)->next = (*stack)->next->next;
 	tmp->next = *stack;
 	*stack = tmp;
+	return (0);
 }
 
 
-void	ft_ss(t_list **stack_a, t_list **stack_b)
+int	ft_ss(t_list **stack_a, t_list **stack_b)
 {
-	ft_sx(stack_a);
-	ft_sx(stack_b);
+	return (ft_sx(stack_a) + ft_sx(stack_b));
 }

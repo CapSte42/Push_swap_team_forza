@@ -1,6 +1,7 @@
 
 
 #include "push_swap.h"
+#include "libft.h"
 
 int ft_check_moves(char *moves)
 {
@@ -27,19 +28,52 @@ int ft_check_moves(char *moves)
 	else if (!ft_strncmp(moves, "rrr\n", 4))
 		return (11);
 	else
-		return (0);
+		return (-1);
 }
 
-void    ft_parse_moves(t_list **stack_a, t_list **stack_b)
+int	ft_do_scenario(int scenario, t_list **stack_a, t_list **stack_b)
+{
+	if (scenario == 1)
+		return (ft_sx(stack_a));
+	else if (scenario == 2)
+		return (ft_sx(stack_b));
+	else if (scenario == 3)
+		return (ft_ss(stack_a, stack_b));
+	else if (scenario == 4)
+		return (ft_px(stack_a, stack_b));
+	else if (scenario == 5)
+		return (ft_px(stack_b, stack_a));
+	else if (scenario == 6)
+		return (ft_rx(stack_a));
+	else if (scenario == 7)
+		return (ft_rx(stack_b));
+	else if (scenario == 8)
+		return (ft_rr(stack_a, stack_b));
+	else if (scenario == 9)
+		return (ft_rrx(stack_a));
+	else if (scenario == 10)
+		return (ft_rrx(stack_b));
+	else if (scenario == 11)
+		return (ft_rrr(stack_a, stack_b));
+	return (0);
+}
+
+int    ft_parse_moves(t_list **stack_a, t_list **stack_b)
 {
     int scenario;
-    while ((moves = get_next_line(0)) != NULL)
-    {
-        scenario = ft_check_moves(moves);
-        //ft_do_scenario(scenario, stack_a, stack_b);
-        ft_printf(2, "%d\n", scenario);
-       // free(line); // Assicurati di liberare la memoria se get_next_line alloca memoria
-    }
-    printf("EOF ricevuto o errore. Uscita dal programma.\n");
-}
+	int	illegal_moves;
+    char *moves;
 
+    scenario = 0;
+	illegal_moves = 0;
+    while (scenario != -1)
+    {
+        moves = ft_get_next_line(0);
+		if (moves == NULL)
+			break ;
+		scenario = ft_check_moves(moves);
+        illegal_moves += ft_do_scenario(scenario, stack_a, stack_b);
+		free(moves);
+    }
+    return (illegal_moves);
+}

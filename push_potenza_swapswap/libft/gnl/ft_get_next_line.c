@@ -104,7 +104,7 @@ static char	*ft_read_line(int fd, char *remainder)
 		read_remainder[bytes_read] = '\0';
 		temp_remainder = remainder;
 		remainder = ft_strjoin(temp_remainder, read_remainder);
-		free(temp_remainder);
+		//free(temp_remainder);
 	}
 	free(read_remainder);
 	return (remainder);
@@ -123,7 +123,7 @@ char	*ft_get_next_line(int fd)
 {
 	char		*line;
 	static char	*remainder[FD_MAX];
-
+	
 	if (fd == -1 || BUFFER_SIZE <= 0 || fd >= FD_MAX)
 		return (NULL);
 	remainder[fd] = ft_read_line(fd, remainder[fd]);

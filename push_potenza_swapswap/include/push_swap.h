@@ -34,13 +34,13 @@ char	*ft_push_best(t_list **stack_a, t_list **stack_b,
 			t_list *node, char *moves);
 char	*ft_last_rotate(t_list **stack_a, char *moves);
 
-void	ft_rx(t_list **stack);
-void	ft_rrx(t_list **stack);
-void	ft_sx(t_list **stack);
-void	ft_px(t_list **stack_a, t_list **stack_b);
-void	ft_rr(t_list **stack_a, t_list **stack_b);
-void	ft_rrr(t_list **stack_a, t_list **stack_b);
-void	ft_ss(t_list **stack_a, t_list **stack_b);
+int	ft_rx(t_list **stack);
+int	ft_rrx(t_list **stack);
+int	ft_sx(t_list **stack);
+int	ft_px(t_list **stack_a, t_list **stack_b);
+int	ft_rr(t_list **stack_a, t_list **stack_b);
+int	ft_rrr(t_list **stack_a, t_list **stack_b);
+int	ft_ss(t_list **stack_a, t_list **stack_b);
 
 t_list	*ft_lis(t_list **lst);
 void	ft_lstclean(t_list **lst);
@@ -73,5 +73,9 @@ void	ft_set_list(t_list **lst, char **token);
 void	ft_free_token_array(char **token);
 
 void	ft_print_test(t_list *stack_a, t_list *stack_b, t_list *lis);
+
+int ft_stacks_are_cool(t_list **stack_a, t_list **stack_b);
+int    ft_parse_moves(t_list **stack_a, t_list **stack_b);
+
 
 #endif
