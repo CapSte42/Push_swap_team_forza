@@ -30,17 +30,13 @@ SRCS        := \
 				swapswap.c \
 				ft_print_test.c
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
-#CHECKER		:= \
-	lib/libft/src/_get_next_line/ft_get_next_line.c \
-	src/push_swap_checker.c \
-	src/push_swap_actions.c \
-	src/lst/t_stack_is_sorted.c \
-	src/lst/t_stack_add_back.c \
-	src/lst/t_stack_set_to_head.c \
-	src/lst/t_stack_new.c \
-	src/lst/t_stack_check_dup.c \
-	src/lst/t_stack_n_is_inside.c \
-	src/lst/t_stack_free.c
+CHECKER		:= \
+	src/error.c \
+	src/split_input_into_token.c \
+	src/check_token.c \
+	src/set_list.c \
+	src/bonus/ft_checker.c
+
 
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
@@ -80,22 +76,22 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f clean; done
 	$(RM) $(BUILD_DIR)
-#	$(RM) checker.d
+	$(RM) checker.d
 	${info }
 	${info ${BOLD}${YELLOW}Cleaning in progress...${NO_COLOR}}
 
 fclean: clean
 	for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f fclean; done
 	$(RM) $(NAME)
-#	$(RM) checker
+	$(RM) checker
 
 re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-#bonus: banner $(LIB_TARGET)
-#	$(CC) $(CFLAGS) $(CPPFLAGS) $(CHECKER) $(LIB_TARGET) -o checker
-#	${info ${BOLD}Creating  -> ${BLUE}checker${NO_COLOR}}
+bonus: banner $(LIB_TARGET)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(CHECKER) $(LIB_TARGET) -o checker
+	${info ${BOLD}Creating  -> ${BLUE}checker${NO_COLOR}}
 
 # Style ----------------------------------------------------------------------->
 
