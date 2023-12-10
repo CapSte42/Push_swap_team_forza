@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:50:36 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/08 11:35:42 by fdonati          ###   ########.fr       */
+/*   Updated: 2023/12/10 19:05:10 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_sx(t_list **stack)
 {
 	t_list	*tmp;
 
-	if (!*stack)
+	if (ft_lstsize(*stack) < 2)
 		return (1);
 	tmp = (*stack)->next;
 	(*stack)->next = (*stack)->next->next;

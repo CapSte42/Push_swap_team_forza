@@ -25,9 +25,14 @@ static void	ft_put_message(int they_are_cool, int illegal_moves)
 	{
 		ft_printf(1, "OK");
 		if (illegal_moves != 0)
-			ft_printf(1, " but with %d illegal moves", illegal_moves);
-	} else
+			ft_printf(1, "but  with %d illegal moves", illegal_moves);
+	}
+	else
+	{
 		ft_printf(1, "KO");
+		if (illegal_moves != 0)
+			ft_printf(1, " with %d illegal moves", illegal_moves);
+	}
 	ft_printf(1, "\n");
 }
 
