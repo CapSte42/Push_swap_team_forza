@@ -19,34 +19,8 @@ Gli altri dati della t_data non servono, in quanto, successivamente a questi pas
 #include "push_swap.h"
 #include "libft.h"
 
-
-
-void	ft_free_all(t_list **stack_a, t_list **stack_b, char **token)
+static void	ft_put_message(int they_are_cool, int illegal_moves)
 {
-	if (token)
-		ft_free_matrix(token);
-	if (*stack_a)
-		ft_lstclear(stack_a, free);
-	if (*stack_b)
-		ft_lstclear(stack_b, free);
-}
-int main(int ac, char **av)
-{
-    char	**token;
-	int	illegal_moves;
-	int they_are_cool;
-
-	they_are_cool = 0;
-	illegal_moves = 0;
-	t_list	*stack_a;
-	t_list	*stack_b;
-	token = ft_split_input_into_token(ac, av);
-	ft_check_token(token);
-	ft_set_list(&stack_a, token);
-    stack_b = NULL;
-	illegal_moves = ft_parse_moves(&stack_a, &stack_b);
-	they_are_cool = ft_stacks_are_cool(&stack_a, &stack_b);
-	ft_free_all(&stack_a, &stack_b, token);
 	if (they_are_cool == 1)
 	{
 		ft_printf(1, "OK");
@@ -55,5 +29,28 @@ int main(int ac, char **av)
 	} else
 		ft_printf(1, "KO");
 	ft_printf(1, "\n");
-    return (0);
+}
+
+int	main(int ac, char **av)
+{
+	char	**token;
+	int		illegal_moves;
+	int		they_are_cool;
+	t_list	*stack_a;
+	t_list	*stack_b;
+
+	they_are_cool = 0;
+	illegal_moves = 0;
+	token = ft_split_input_into_token(ac, av);
+	ft_check_token(token);
+	ft_set_list(&stack_a, token);
+	stack_b = NULL;
+	illegal_moves = ft_parse_moves(&stack_a, &stack_b);
+	they_are_cool = ft_stacks_are_cool(&stack_a, &stack_b);
+	ft_free_matrix(token);
+	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
+	token = NULL;
+	ft_put_message(they_are_cool, illegal_moves);
+	return (0);
 }

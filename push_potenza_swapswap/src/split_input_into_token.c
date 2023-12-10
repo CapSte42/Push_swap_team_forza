@@ -4,11 +4,18 @@
 static char	**ft_one_arg(char *str, char sep)
 {
 	char	**token;
+	int		i;
 
 	sep = ' ';
 	token = ft_split(str, sep);
 	if (token == NULL)
 		ft_error(0, NULL, NULL);
+	i = 0;
+	while (token[i])
+		i++;
+	if (i < 3)
+		ft_error(0, token, NULL);
+	
 	return (token);
 }
 
@@ -51,6 +58,12 @@ static char	**ft_multiple_arg(char **matrix, int size)
 	}
 	token[size - 1] = NULL;
 	ft_multiple_arg_is_triky(token);
+		i = 0;
+	while (token[i])
+		i++;
+	if (i < 3)
+		ft_error(0, token, NULL);
+	
 	return (token);
 }
 

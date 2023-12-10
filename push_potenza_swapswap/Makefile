@@ -39,6 +39,7 @@ CHECKER		:= \
 	src/swap_moves.c \
 	src/bonus/ft_parse_moves.c \
 	src/bonus/ft_stacks_are_cool.c \
+	src/ft_print_test.c \
 	src/bonus/ft_checker.c
 
 BUILD_DIR   := .build

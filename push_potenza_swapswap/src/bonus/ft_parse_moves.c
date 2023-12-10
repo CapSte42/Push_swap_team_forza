@@ -3,7 +3,7 @@
 #include "push_swap.h"
 #include "libft.h"
 
-int ft_check_moves(char *moves)
+int	ft_check_moves(char *moves)
 {
 	if (!ft_strncmp(moves, "sa\n", 3))
 		return (1);
@@ -58,22 +58,22 @@ int	ft_do_scenario(int scenario, t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-int    ft_parse_moves(t_list **stack_a, t_list **stack_b)
+int	ft_parse_moves(t_list **stack_a, t_list **stack_b)
 {
-    int scenario;
-	int	illegal_moves;
-    char *moves;
+	int		scenario;
+	int		illegal_moves;
+	char	*moves;
 
-    scenario = 0;
+	scenario = 0;
 	illegal_moves = 0;
-    while (scenario != -1)
-    {
-        moves = ft_get_next_line(0);
+	while (scenario != -1)
+	{
+		moves = ft_get_next_line(0);
 		if (moves == NULL)
 			break ;
 		scenario = ft_check_moves(moves);
-        illegal_moves += ft_do_scenario(scenario, stack_a, stack_b);
+		illegal_moves += ft_do_scenario(scenario, stack_a, stack_b);
 		free(moves);
-    }
-    return (illegal_moves);
+	}
+	return (illegal_moves);
 }

@@ -65,7 +65,6 @@ static void	ft_is_unique(char **token)
 		{
 			if (ft_atoi(token[i], &error) == ft_atoi(token[j], &error))
 			{
-				ft_printf(2, "Error: Duplicate value\n");
 				ft_error(1, token, NULL);
 			}
 			j++;

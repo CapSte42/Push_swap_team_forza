@@ -8,15 +8,13 @@ void	ft_error(int error, char **token, t_list **lst)
 	if (lst)
 		ft_lstclear(lst, free);
 	if (error == 1)
-		ft_printf(2,
-			"Oye gringo, intenta dar una entrada correcta la próxima vez\n");
+		ft_printf(2, "Error\n");
 	if (error == 2)
-		ft_printf(2, "Malloc error\n");
+		ft_printf(2, "Error\n");
 	if (error == 3)
-		ft_printf(2, "Something went wrong, we are sorry.%s",
-			"\nTake a candy as gift and retry.\n");
+		ft_printf(2, "Error\n");
 	if (error == 4)
-		ft_printf(2, "Malloc list error\n");
+		ft_printf(2, "Error\n");
 	if (error == 5)
 		ft_printf(2, "Error: ...-0? Really?\n");
 	if (error < 0)
