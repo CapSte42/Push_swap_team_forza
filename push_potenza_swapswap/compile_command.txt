@@ -11,4 +11,10 @@ ARG="4 cazzi -1 0 -0 +0 00 4"; valgrind --leak-check=full ./push_swap $ARG | wc 
 SISTEMATE PER QUANTO POSSIBILE PUSH_SWAP.H
 
 CHECKER FUNZIONANTE
-Unica imperfezione
+valgrindato e testato
+
+Eliminati messaggi di errori personalizzati. Quando si lancia il push_swap con i checker i messaggi di errore si mischiano e succede un casino. Serve un messaggio breve. come Error. piango
+
+probabilmente da norminettare, giuro ho fatto del mio meglio da casa.
+
+

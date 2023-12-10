@@ -1,11 +1,11 @@
-# Config ---------------------------------------------------------------------->
-
+#-----------Dichiarazione di nomi e percorsi in variabili
 NAME        := push_swap
 LIB        	:= ft
 LIB_TARGET 	:= libft/libft.a
 INCS        := \
 	./include
 SRC_DIR     := src
+#-----------File da compilare per push_swap
 SRCS        := \
 				push_swap.c \
 				check_token.c \
@@ -30,6 +30,7 @@ SRCS        := \
 				swapswap.c \
 				ft_print_test.c
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
+#-----------File da compilare per checker
 CHECKER		:= \
 	src/error.c \
 	src/split_input_into_token.c \
@@ -45,17 +46,19 @@ CHECKER		:= \
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
+#-----------tutti i file .o vengono inseriti nella cartella nascosta .build. vengono compilati anche file .d che contengono i link delle dipendenze
 CC          := clang
 CFLAGS      := -Wall -Wextra -Werror
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 LDFLAGS     := $(addprefix -L,$(dir $(LIB_TARGET)))
 LDLIB      	:= $(addprefix -l,$(LIB))
+#-----------clang alternativa a cc o gcc. il resto sono flag per includere librerie
 RM          := rm -rf
-MAKEFLAGS   := --no-print-directory
-DIR_DUP     = mkdir -p $(@D)
+MAKEFLAGS   := --no-print-directory # non stampa le entrate e le uscite dalle directory per compilazione file
+DIR_DUP     = mkdir -p $(@D) #chiedere a chatgpt, lunga da spiegare
 
 .PHONY: clean fclean re
-.SILENT:
+.SILENT: #esegue il makefile in maniera silenziosa, non stampa nulla
 
 # Rules ----------------------------------------------------------------------->
 
