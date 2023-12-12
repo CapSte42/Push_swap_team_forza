@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
+/*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 13:33:49 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/11 13:33:50 by fdonati          ###   ########.fr       */
+/*   Created: 2023/12/11 13:33:49 by smontuor          #+#    #+#             */
+/*   Updated: 2023/12/12 20:14:10 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 static void	ft_put_message(int they_are_cool, int illegal_moves)
 {
+	if (illegal_moves == -1)
+		ft_error(1, NULL, NULL);
 	if (they_are_cool == 1)
 	{
-		ft_printf(1, "OK");
-		if (illegal_moves != 0)
-			ft_printf(1, "but  with %d illegal moves", illegal_moves);
+		ft_printf(1, "OK\n");
 	}
 	else
 	{
-		ft_printf(1, "KO");
-		if (illegal_moves != 0)
-			ft_printf(1, " with %d illegal moves", illegal_moves);
+		ft_printf(1, "KO\n");
 	}
-	ft_printf(1, "\n");
 }
 
 int	main(int ac, char **av)
@@ -44,7 +41,8 @@ int	main(int ac, char **av)
 	ft_set_list(&stack_a, token);
 	stack_b = NULL;
 	illegal_moves = ft_parse_moves(&stack_a, &stack_b);
-	they_are_cool = ft_stacks_are_cool(&stack_a, &stack_b);
+	if (illegal_moves != -1)
+		they_are_cool = ft_stacks_are_cool(&stack_a, &stack_b);
 	ft_free_matrix(token);
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
+/*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 13:07:50 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/11 13:07:52 by fdonati          ###   ########.fr       */
+/*   Created: 2023/12/11 13:07:50 by smontuor          #+#    #+#             */
+/*   Updated: 2023/12/12 19:30:35 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new_lst);
 }
-/*la variabile bellafra e' cosi' denominata in memoria del fu Fdonati.*/
+/*la variabile bellafra e' cosi' denominata in memoria del fu smontuor.*/
 /*Parameters
 	lst: The address of a pointer to a node.
 	f: The address of the function used to iterate on

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
+/*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 13:30:57 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/11 13:30:59 by fdonati          ###   ########.fr       */
+/*   Created: 2023/12/12 19:09:27 by smontuor          #+#    #+#             */
+/*   Updated: 2023/12/12 19:09:42 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_error(int error, char **token, t_list **lst)
 	if (error == 4)
 		ft_printf(2, "Error\n");
 	if (error == 5)
-		ft_printf(2, "Error: ...-0? Really?\n");
+		ft_printf(2, "Error\n");
 	if (error < 0)
 		return ;
 	exit(error);

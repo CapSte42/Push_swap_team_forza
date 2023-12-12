@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
+/*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 13:34:12 by fdonati           #+#    #+#             */
-/*   Updated: 2023/12/11 13:34:14 by fdonati          ###   ########.fr       */
+/*   Created: 2023/12/11 13:34:12 by smontuor          #+#    #+#             */
+/*   Updated: 2023/12/12 20:10:13 by smontuor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,7 @@ int	ft_parse_moves(t_list **stack_a, t_list **stack_b)
 		illegal_moves += ft_do_scenario(scenario, stack_a, stack_b);
 		free(moves);
 	}
+	if (scenario == -1)
+		illegal_moves = -1;
 	return (illegal_moves);
 }
