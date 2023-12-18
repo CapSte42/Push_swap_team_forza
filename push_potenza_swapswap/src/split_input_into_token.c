@@ -15,7 +15,6 @@ static char	**ft_one_arg(char *str, char sep)
 		i++;
 	if (i < 3)
 		ft_error(0, token, NULL);
-	
 	return (token);
 }
 

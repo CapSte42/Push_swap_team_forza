@@ -3,25 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_input_into_token.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smontuor <smontuor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 13:30:16 by smontuor          #+#    #+#             */
-/*   Updated: 2023/12/12 19:17:53 by smontuor         ###   ########.fr       */
+/*   Created: 2023/12/13 14:03:04 by tpicchio          #+#    #+#             */
+/*   Updated: 2023/12/15 12:46:27 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	ft_consecutive_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i + 1])
+	{
+		if (ft_isspace(str[i]) && ft_isspace(str[i + 1]))
+			return (1);
+		i++;
+	}
+	if (str[0] == ' ' || str[i] == ' ')
+		return (1);
+	return (0);
+}
 
 static char	**ft_one_arg(char *str, char sep)
 {
 	char	**token;
 	int		i;
 
+	if (ft_consecutive_space(str) == 1)
+		ft_error(1, NULL, NULL);
 	sep = ' ';
 	token = ft_split(str, sep);
 	if (token == NULL)
 		ft_error(0, NULL, NULL);
 	i = 0;
+	while (token[i])
+		i++;
 	return (token);
 }
 
@@ -65,6 +85,10 @@ static char	**ft_multiple_arg(char **matrix, int size)
 	token[size - 1] = NULL;
 	ft_multiple_arg_is_triky(token);
 	i = 0;
+	while (token[i])
+		i++;
+	if (i < 2)
+		ft_error(0, token, NULL);
 	return (token);
 }
 
@@ -85,5 +109,7 @@ char	**ft_split_input_into_token(int ac, char **av)
 	{
 		token = ft_multiple_arg(av, ac);
 	}
+	if (token[0] == NULL)
+		ft_error(0, NULL, NULL);
 	return (token);
 }

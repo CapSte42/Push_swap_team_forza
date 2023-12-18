@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+// Funzione per trovare la LIS e stampare gli elementi
+void findLIS(int arr[]) {
+    int lis[9] = {1,1,1,1,1,1,1,1,1};
+    int previousIndex[9] = {-1,-1,-1,-1,-1,-1,-1,-1,-1};
+
+    int maxLength = 1;
+    int endIndex = 0;
+
+    // Calcola la lunghezza massima della LIS
+    for (int i = 1; i < 9; i++) {
+        for (int j = 0; j < i; j++) {
+            if (arr[i] > arr[j] && lis[i] < lis[j] + 1) {
+                lis[i] = lis[j] + 1;
+                previousIndex[i] = j;
+            }
+        }
+        // Aggiorna la lunghezza massima
+        if (lis[i] > maxLength) {
+            maxLength = lis[i];
+            endIndex = i;
+        }
+    }
+
+    // Costruisci e stampa la LIS
+    int currentIndex = endIndex;
+    while (currentIndex != -1) {
+        printf("%d ", arr[currentIndex]);
+        currentIndex = previousIndex[currentIndex];
+    }
+    printf("\n");
+}
+
+int main() {
+    int sequenza[] = {10, 22, 9, 33, 21, 50, 41, 60, 80};
+    int lunghezza = sizeof(sequenza) / sizeof(sequenza[0]);
+
+    printf("La LIS è: ");
+    findLIS(sequenza);
+
+    return 0;
+}
