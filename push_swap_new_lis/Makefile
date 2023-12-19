@@ -24,7 +24,7 @@ SRCS        := \
 				ft_set_obm_dist_utils.c \
 				ft_set_obm_dist.c \
 				ft_set_swap.c \
-				ft_split_input_into_token.c \
+				ft_split_input_into_token.c
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 #-----------File da compilare per checker
 CHECKER		:= \
@@ -43,7 +43,7 @@ BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
 #-----------tutti i file .o vengono inseriti nella cartella nascosta .build. vengono compilati anche file .d che contengono i link delle dipendenze
-CC          := clang
+CC          := cc
 CFLAGS      := -Wall -Wextra -Werror
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 LDFLAGS     := $(addprefix -L,$(dir $(LIB_TARGET)))
@@ -51,7 +51,7 @@ LDLIB      	:= $(addprefix -l,$(LIB))
 #-----------clang alternativa a cc o gcc. il resto sono flag per includere librerie
 RM          := rm -rf
 MAKEFLAGS   := --no-print-directory # non stampa le entrate e le uscite dalle directory per compilazione file
-DIR_DUP     = mkdir -p $(@D) #chiedere a chatgpt, lunga da spiegare
+DIR_DUP     = mkdir -p $(@D) #crea la cartella se non esiste
 
 .PHONY: clean fclean re
 .SILENT: #esegue il makefile in maniera silenziosa, non stampa nulla

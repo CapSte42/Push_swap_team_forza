@@ -6,11 +6,34 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:29:25 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/13 14:24:02 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:06:48 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_free_arrays(size_t **arr, size_t **arr2, ssize_t **arr3)
+{
+	int	flag;
+
+	flag = 0;
+	if (*arr)
+	{
+		flag++;
+		free(*arr);
+	}
+	if (*arr2)
+	{
+		flag++;
+		free(*arr2);
+	}
+	if (*arr3)
+	{
+		flag++;
+		free(*arr3);
+	}
+	return (flag);
+}
 
 static void	ft_swap(ssize_t *a, ssize_t *b)
 {

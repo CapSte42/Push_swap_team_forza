@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:03:29 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/15 16:14:47 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:05:35 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_data
 }	t_data;
 
 void	ft_set_index(t_list **lst);
+int		ft_free_arrays(size_t **arr, size_t **lis, ssize_t **prev_ind);
 void	ft_set_swap(t_list **lst);
 char	*ft_push_swap(t_list **stack_a, t_list *not_push);
 
@@ -58,9 +59,10 @@ char	**ft_split_input_into_token(int ac, char **av);
 void	ft_error(int error, char **token, t_list **lst);
 void	ft_check_token(char **token);
 void	ft_set_list(t_list **lst, char **token);
-void	ft_free_token_array(char **token);
 
 int		ft_stacks_are_cool(t_list **stack_a, t_list **stack_b);
 int		ft_parse_moves(t_list **stack_a, t_list **stack_b);
+
+void	ft_print_status(t_list *lis, t_list *lst, t_list *stack_b, char *moves);
 
 #endif

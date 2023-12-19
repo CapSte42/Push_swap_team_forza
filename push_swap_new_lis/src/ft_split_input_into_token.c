@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:03:04 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/15 12:47:33 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:44:17 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ char	**ft_split_input_into_token(int ac, char **av)
 	}
 	else if (ac == 2)
 	{
+		if (av[1][0] == '\0')
+			ft_error(1, NULL, NULL);
 		token = ft_one_arg(av[1], ' ');
 	}
 	else if (ac > 2)

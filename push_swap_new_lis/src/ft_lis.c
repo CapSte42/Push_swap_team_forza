@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:37:58 by tpicchio          #+#    #+#             */
-/*   Updated: 2023/12/15 12:14:25 by tpicchio         ###   ########.fr       */
+/*   Updated: 2023/12/19 09:55:43 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ static int	ft_set_arrays(size_t **lis, ssize_t **prev_ind, int size)
 	*lis = malloc(sizeof(size_t) * size);
 	*prev_ind = malloc(sizeof(ssize_t) * size);
 	if (!*lis || !*prev_ind)
+	{
+		ft_free_arrays(NULL, lis, prev_ind);
 		return (0);
+	}
 	i = -1;
 	while (++i < size)
 	{
@@ -92,24 +95,25 @@ static int	ft_find_lis(t_list **lis_lst, t_list *lst, int size)
 	ssize_t	*prev_ind;
 	int		i;
 
-	if (ft_set_arrays(&lis, &prev_ind, size) == 0)
-		return (0);
-	if (ft_lst_to_arr(lst, &arr) == 0)
-		return (0);
-	i = ft_lis_algo(arr, lis, prev_ind, size);
-	while (i >= 0)
+	if (ft_set_arrays(&lis, &prev_ind, size) == 1
+		&& ft_lst_to_arr(lst, &arr) == 1)
 	{
-		new = malloc(sizeof(size_t));
-		if (!new)
-			return (0);
-		*new = arr[i];
-		ft_lstadd_front(lis_lst, ft_lstnew(new));
-		i = prev_ind[i];
+		i = ft_lis_algo(arr, lis, prev_ind, size);
+		while (i >= 0)
+		{
+			new = malloc(sizeof(size_t));
+			if (!new)
+			{
+				ft_lstclear(lis_lst, free);
+				ft_free_arrays(&arr, &lis, &prev_ind);
+				return (0);
+			}
+			*new = arr[i];
+			ft_lstadd_front(lis_lst, ft_lstnew(new));
+			i = prev_ind[i];
+		}
 	}
-	free(arr);
-	free(lis);
-	free(prev_ind);
-	return (1);
+	return (ft_free_arrays(&arr, &lis, &prev_ind));
 }
 
 t_list	*ft_lis(t_list *lst)
@@ -120,7 +124,8 @@ t_list	*ft_lis(t_list *lst)
 	size_t	rot;
 
 	lis_lst = NULL;
-	ft_find_lis(&lis_lst, lst, ft_lstsize(lst));
+	if (ft_find_lis(&lis_lst, lst, ft_lstsize(lst)) != 3)
+		ft_error(2, NULL, &lst);
 	tmp = lst;
 	rot = 0;
 	while (tmp && rot == 0)
